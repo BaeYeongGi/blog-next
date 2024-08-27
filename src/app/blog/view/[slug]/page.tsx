@@ -1,9 +1,9 @@
 import { GetStaticPropsContext } from "next";
-import fs from 'fs';
 import { promises as fsPromises } from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote/rsc";
+import Link from "next/link";
 
 interface BlogPostProps {
   source: MDXRemoteSerializeResult;
@@ -14,19 +14,7 @@ interface BlogPostProps {
   };
 }
 // MDX 파일 경로
-const POSTS_DIR = path.join(process.cwd(), 'src', 'app', 'posts');
-
-// `getStaticPaths` 함수: 모든 블로그 포스트의 slug 경로를 생성
-export async function generateStaticParams() {
-  const filenames = fs.readdirSync(POSTS_DIR);
-  console.log('filenames', filenames)
-  return filenames.map((filename) => {
-    const slug = filename.replace(/\.mdx$/, "");
-    return {
-      slug,
-    };
-  });
-};
+const POSTS_DIR = path.join(process.cwd(), 'src', 'posts', 'view');
 
 // `getStaticProps` 함수: 특정 포스트 데이터를 가져오는 함수
 export async function generateMetadata({params}: GetStaticPropsContext){
@@ -40,7 +28,7 @@ export async function generateMetadata({params}: GetStaticPropsContext){
   }
 }
 
-const BlogPost = async ({ params }: {params: {slug: string} }) => {
+export default async function View({ params }: {params: {slug: string} }){
   const { slug } = params;
   const filePath = path.join(POSTS_DIR, `${slug}.mdx`);
   const fileContents = await fsPromises.readFile(filePath, "utf8");
@@ -54,8 +42,8 @@ const BlogPost = async ({ params }: {params: {slug: string} }) => {
       <p>{data.summary}</p>
       <p>{data.ppa}</p>
       <MDXRemote source={content} />
+      <Link href="/blog/list">목록으로</Link><br/>
+      <Link href="/">메인으로</Link>
     </>
   )
 }
-
-export default BlogPost;
