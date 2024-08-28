@@ -1,11 +1,22 @@
-import Image from "next/image";
-import Link from "next/link";
+import Link from 'next/link';
+import { generateStaticParams } from '@/src/lib/post';
 
-export default function Home() {
+export default async function Home() {
+
+  const generateList = await generateStaticParams();
+
   return (
     <div>
-
-      <Link href="/blog/list">블로그</Link>
+      <h1>블로그 목록</h1>
+      {
+        generateList.map((item) => {
+          return (
+            <Link href={`/blog/view/${item.slug}`} key={item.slug}>
+              {item.data.title}
+            </Link>
+          )
+        })
+      }
     </div>
   );
 }
