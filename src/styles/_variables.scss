@@ -1,0 +1,29 @@
+// 기본 박스 쉐도우
+$boxShadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+
+// 오목한 스타일 
+$buttonConcave: inset -2px -2px 6px rgba(255, 255, 255, 0.5),
+  inset 2px 2px 4px rgba(0, 0, 0, 0.15); 
+
+// 볼록한 스타일
+$buttonConvex: -6px -6px 14px rgba(255, 255, 255, 0.7),
+6px 6px 10px rgba(0, 0, 0, 0.15);
+
+// 볼록한 스타일 hover
+$buttonConvexHover: -2px -2px 6px rgba(255, 255, 255, 0.6),
+2px 2px 4px rgba(0, 0, 0, 0.1);
+
+// 오목 & 볼록 스타일 mixin
+@mixin buttonShadowStyle {
+  box-shadow: $buttonConvex;
+  &:hover {
+    box-shadow: $buttonConvexHover;
+  } 
+  &:active {
+    box-shadow: $buttonConcave;
+  }
+}
+
+$PretendarLight: 'Pretendard-Light', Malgun Gothic, Helvetica, sans-serif;
+$PretendarRegular: 'Pretendard-Regular', Malgun Gothic, Helvetica, sans-serif;
+$PretendarBold: 'Pretendard-Bold', Malgun Gothic, Helvetica, sans-serif;

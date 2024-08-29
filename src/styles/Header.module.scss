@@ -1,0 +1,62 @@
+@import 'variables';
+
+.header_container {
+  width:100%;
+}
+.header { 
+  width: 76.8rem;
+  height: 6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  box-sizing: border-box;
+  margin:0 auto;
+  box-shadow: $boxShadow;
+  border-radius:0 0 1rem 1rem;
+  background-color:#fff;
+  .nav {
+    display:flex;
+    > a {
+      display:flex;
+      align-items: center;
+      height:3rem;
+      padding:0 1.4rem;
+      border-radius:1rem;
+      font-weight:600;
+      color:#333;
+      @include buttonShadowStyle;
+      &:not(:last-child){
+        margin-right:0.8rem;
+      }
+
+    }
+  }  
+}
+@media (max-width: 768px) {
+  .header {
+    width:100%;
+  }
+}
+
+.button_wrap {
+  position:relative;
+  display:flex;
+}
+
+.github_button {
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  margin-right:0.8rem;
+  width:3rem;
+  height:3rem;
+  border-radius:3rem;
+  background-color:#fff;
+  @include buttonShadowStyle;
+  svg {
+    width:2rem;
+    height:2rem;
+  }
+}
+

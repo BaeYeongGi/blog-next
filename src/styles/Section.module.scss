@@ -1,0 +1,19 @@
+@import 'variables';
+
+.section {
+  position:relative;
+  width:76.8rem;
+  margin:1rem auto 1rem auto;
+  box-shadow: $boxShadow;
+  background-color:#fff;
+  padding:2rem;
+  box-sizing:border-box;
+  border-radius:1rem;
+  min-height:150rem;
+}
+@media (max-width: 768px) {
+  .section {
+    width:calc(100% - 4rem);
+    margin:1rem 2rem 0 2rem;
+  }
+}

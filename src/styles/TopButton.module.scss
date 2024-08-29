@@ -1,0 +1,31 @@
+@import 'variables';
+
+.button {
+  position: fixed;
+  bottom: -6rem;
+  left:50%;
+  margin-left:39.4rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 4rem;
+  cursor: pointer;
+  background-color:#fff;
+  transition-duration: 0.3s;
+  transition-property: bottom;
+  @include buttonShadowStyle;
+  svg {
+    width:2.6rem;
+    height:2.6rem;
+  }
+  &.fixed {
+    bottom:2rem;
+  }
+}
+
+@media (max-width: 810px) {
+  .button {
+    margin-left:0;
+    left:auto;
+    right:3rem;
+  }
+}

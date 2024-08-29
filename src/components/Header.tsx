@@ -1,23 +1,28 @@
+'use client';
+
 import Link from "next/link";
-import styles from "@/src/styles/Header.module.css";
-import { Dark, GitHub, Light } from "@/public/images/svg";
+import styles from "@/src/styles/Header.module.scss";
+import { GitHub } from "@/public/images/svg";
+import { useState, useEffect } from 'react';
+import ThemeButton from "@/src/components/ThemeButton";
 
 const Header = () => {
-  return (
-    <header className={styles.header}>
-      <nav className={styles.nav}>
-        <Link href="/">블로그</Link>
-        <Link href="/about">About</Link>
-      </nav>
-      <Link href="/" target="_blank" aria-label="Github">
-        <GitHub/>
-      </Link>
-      <button className={styles.theme_button}>
-        <Light />
-        <Dark/>
-      </button>
 
-    </header>
+  return (
+    <div className={styles.header_container}>
+      <header className={styles.header}>
+        <nav className={styles.nav}>
+          <Link href="/">Blog</Link>
+          <Link href="/about">About</Link>
+        </nav>
+        <div className={styles.button_wrap}>
+          <Link href="/" className={styles.github_button} target="_blank" aria-label="Github">
+            <GitHub/>
+          </Link>
+          <ThemeButton/>
+        </div>
+      </header>
+    </div>
   );
 };
 

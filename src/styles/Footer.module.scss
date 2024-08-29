@@ -1,0 +1,19 @@
+@import 'variables';
+
+.footer {
+  width:76.8rem;
+  margin:0 auto 1rem auto;
+  font-family:'Pretendard-Bold';
+  background-color:#fff;
+  padding:2rem;
+  box-sizing:border-box;
+  box-shadow: $boxShadow;
+  border-radius:1rem;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    width:calc(100% - 4rem);
+    margin:1rem 2rem 2rem 2rem;
+  }
+}

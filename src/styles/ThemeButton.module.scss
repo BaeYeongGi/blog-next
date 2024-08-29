@@ -1,0 +1,37 @@
+@import 'variables';
+
+.theme_button {
+  display:flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width:6rem;
+  height:3rem;
+  border-radius:1.5rem;
+  background-color:#f1f1f1;
+  box-shadow: $buttonConcave;
+  cursor:pointer;
+  position:relative;
+  svg {
+    width:2rem;
+    height:2rem;
+  }
+  &::after {
+    content:'';
+    display:block;
+    position:absolute;
+    top:0.3rem;
+    right:0.4rem;
+    width:2.4rem;
+    height:2.4rem;
+    border-radius:2.6rem;
+    background-color: #fff;
+    box-shadow: $buttonConvex;
+    transition-property: right;
+    transition-duration: 0.2s;
+  }
+  &.dark {
+    &::after {
+      right:3.2rem;
+    }
+  }
+}
