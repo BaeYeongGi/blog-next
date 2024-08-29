@@ -2,9 +2,10 @@
 import { Up } from "@/public/images/svg";
 import styles from "@/src/styles/TopButton.module.scss";
 import { useEffect, useState } from 'react';
+import { useTheme } from "next-themes"
 
 const TopButton = () => {
-
+  const { theme } = useTheme();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -28,8 +29,22 @@ const TopButton = () => {
     })
   }
 
+  const setClass = () => {
+    if(theme === 'dark' && visible){
+      return `${styles.dark} ${styles.fixed}`
+    }
+    if(theme === 'dark'){
+      return styles.dark;
+    }
+    if(visible){
+      return styles.fixed;
+    }
+    return;
+  }
+
+
   return (
-    <button className={visible ? `${styles.button} ${styles.fixed}` : styles.button} onClick={scrollToTop}>
+    <button className={`${styles.button} ${setClass()}`} onClick={scrollToTop}>
       <Up/>
     </button>
   );

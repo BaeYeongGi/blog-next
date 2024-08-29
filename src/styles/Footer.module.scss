@@ -4,11 +4,15 @@
   width:76.8rem;
   margin:0 auto 1rem auto;
   font-family:'Pretendard-Bold';
-  background-color:#fff;
+  background-color:$light-bg;
   padding:2rem;
   box-sizing:border-box;
   box-shadow: $boxShadow;
   border-radius:1rem;
+  &.dark {
+    background-color:$dark-bg;
+    box-shadow:$boxShadow-dark
+  }
 }
 
 @media (max-width: 768px) {

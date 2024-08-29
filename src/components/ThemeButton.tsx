@@ -1,29 +1,15 @@
 'use client';
-
-import React from 'react';
+import { useTheme } from "next-themes"
 import { Dark, Light } from "@/public/images/svg";
-import { useState, useEffect } from 'react';
 import styles from "@/src/styles/ThemeButton.module.scss";
 
-
 const ThemeButton = () => {
-
-  const [theme, setTheme] = useState('light');
+  const { theme, setTheme } = useTheme();
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
+    setTheme(theme === 'light' ? 'dark' : 'light');
   }
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark';
-    if(savedTheme){
-      setTheme(savedTheme);
-    }
-  },[])
-
   return (
-    <button  className={`${styles.theme_button} ${styles[theme]}`} onClick={toggleTheme}>
+    <button className={theme === 'dark' ? `${styles.theme_button} ${styles.dark}` : styles.theme_button} onClick={toggleTheme}>
       <Light />
       <Dark/>
     </button>

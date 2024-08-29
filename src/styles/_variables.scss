@@ -1,17 +1,29 @@
+// Fonts
+$PretendarLight: 'Pretendard-Light', Malgun Gothic, Helvetica, sans-serif;
+$PretendarRegular: 'Pretendard-Regular', Malgun Gothic, Helvetica, sans-serif;
+$PretendarBold: 'Pretendard-Bold', Malgun Gothic, Helvetica, sans-serif;
+
 // 기본 박스 쉐도우
 $boxShadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+$boxShadow-dark: 0 2px 4px rgba(255, 255, 255, 0.1);
 
 // 오목한 스타일 
 $buttonConcave: inset -2px -2px 6px rgba(255, 255, 255, 0.5),
   inset 2px 2px 4px rgba(0, 0, 0, 0.15); 
+$buttonConcave-dark: -6px -6px 14px rgba(0, 0, 0, 0.7),
+3px 3px 4px rgba(255, 255, 255, 0.1); 
 
 // 볼록한 스타일
 $buttonConvex: -6px -6px 14px rgba(255, 255, 255, 0.7),
 6px 6px 10px rgba(0, 0, 0, 0.15);
+$buttonConvex-dark: inset -2px -2px 6px rgba(0, 0, 0, 0.5),
+inset 2px 2px 4px rgba(255, 255, 255, 0.15); 
 
 // 볼록한 스타일 hover
 $buttonConvexHover: -2px -2px 6px rgba(255, 255, 255, 0.6),
 2px 2px 4px rgba(0, 0, 0, 0.1);
+$buttonConvexHover-dark: -2px -2px 6px rgba(0, 0, 0, 0.6),
+2px 2px 4px rgba(255, 255, 255, 0.1);
 
 // 오목 & 볼록 스타일 mixin
 @mixin buttonShadowStyle {
@@ -23,7 +35,21 @@ $buttonConvexHover: -2px -2px 6px rgba(255, 255, 255, 0.6),
     box-shadow: $buttonConcave;
   }
 }
+@mixin buttonShadowStyle-dark {
+  box-shadow: $buttonConvex-dark;
+  &:hover {
+    box-shadow: $buttonConvexHover-dark;
+  } 
+  &:active {
+    box-shadow: $buttonConcave-dark;
+  }
+}
 
-$PretendarLight: 'Pretendard-Light', Malgun Gothic, Helvetica, sans-serif;
-$PretendarRegular: 'Pretendard-Regular', Malgun Gothic, Helvetica, sans-serif;
-$PretendarBold: 'Pretendard-Bold', Malgun Gothic, Helvetica, sans-serif;
+
+// theme
+$light-bg: #fff;
+$light-font: #222;
+$dark-bg: #222;
+$dark-font: #ccc;
+
+

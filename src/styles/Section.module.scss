@@ -5,11 +5,15 @@
   width:76.8rem;
   margin:1rem auto 1rem auto;
   box-shadow: $boxShadow;
-  background-color:#fff;
+  background-color:$light-bg;
   padding:2rem;
   box-sizing:border-box;
   border-radius:1rem;
   min-height:150rem;
+  &.dark {
+    background-color:$dark-bg;
+    box-shadow:$boxShadow-dark;
+  }
 }
 @media (max-width: 768px) {
   .section {

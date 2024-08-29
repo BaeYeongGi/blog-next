@@ -9,7 +9,7 @@
   height: 4rem;
   border-radius: 4rem;
   cursor: pointer;
-  background-color:#fff;
+  background-color:$light-bg;
   transition-duration: 0.3s;
   transition-property: bottom;
   @include buttonShadowStyle;
@@ -19,6 +19,10 @@
   }
   &.fixed {
     bottom:2rem;
+  }
+  &.dark {
+    background-color:$dark-bg;
+    @include buttonShadowStyle-dark;
   }
 }
 

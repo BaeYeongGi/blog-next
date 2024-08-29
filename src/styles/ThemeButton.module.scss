@@ -19,19 +19,26 @@
     content:'';
     display:block;
     position:absolute;
-    top:0.3rem;
+    top:0.33rem;
     right:0.4rem;
     width:2.4rem;
     height:2.4rem;
     border-radius:2.6rem;
-    background-color: #fff;
+    background-color: $light-bg;
     box-shadow: $buttonConvex;
     transition-property: right;
     transition-duration: 0.2s;
   }
   &.dark {
+    background-color:#444;
+    box-shadow: $buttonConcave-dark;
+    svg {
+      stroke: #ffd000;
+    }
     &::after {
       right:3.2rem;
+      box-shadow: $buttonConvex-dark;
+      background-color:$dark-bg;
     }
   }
 }

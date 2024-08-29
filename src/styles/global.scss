@@ -65,17 +65,20 @@ html {
   }
 } */
 
+:root {
+  --background: #f0f0f0;
+}
+
+.dark {
+  --background: #333;
+}
 
 body {
   line-height: 1;
   font-family: 'Pretendard-Regular', Malgun Gothic, Helvetica, sans-serif;
   font-size:1.6rem;
-  background-color:#f0f0f0;
+  background-color:var(--background);
   // cursor:url('../../public/images/mouse.png') auto;
-}
-
-body[data-theme="dark"] {
-  background-color:#999;
 }
 
 ol, ul {
