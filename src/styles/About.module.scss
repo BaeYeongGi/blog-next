@@ -1,0 +1,38 @@
+.about_wrap {
+  display:flex;
+}
+.img_wrap {
+  border-radius:1rem;
+  overflow:hidden;
+  width:180px;
+}
+
+.codebox {
+  white-space:pre;
+  background-color:#1f1f1f;
+  padding:2rem;
+  .const {
+    color:#2666cb;
+  }
+  .variables {
+    color:#33b4ff;
+  }
+  .bracelet {
+    color:#416dff;
+  }
+}
+.code {
+  display:flex;
+  padding-left:1.6rem;
+  // line-height:1.4;
+  margin:0.6rem 0 0 0;
+  .key {
+    color:#7cdcf0;
+  }
+  .value {
+    color:#ce723c;
+  }
+  .comma {
+    color:#fff;
+  }
+}
