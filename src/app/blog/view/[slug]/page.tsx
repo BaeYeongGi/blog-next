@@ -1,4 +1,3 @@
-import { GetStaticPropsContext } from "next";
 import { promises as fsPromises } from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -16,13 +15,11 @@ interface BlogPostProps {
 // MDX 파일 경로
 const POSTS_DIR = path.join(process.cwd(), 'src', 'posts', 'view');
 
-// `getStaticProps` 함수: 특정 포스트 데이터를 가져오는 함수
-export async function generateMetadata({params}: GetStaticPropsContext){
+export async function generateMetadata({params}: {params: {slug: string}}){
   const { slug } = params as {slug:string};
   const filePath = path.join(POSTS_DIR, `${slug}.mdx`);
   const fileContents = await fsPromises.readFile(filePath, "utf8");
-  const { data, content } = matter(fileContents);
-
+  const { data } = matter(fileContents);
   return {
     title: data.title
   }

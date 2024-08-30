@@ -49,6 +49,7 @@ footer, header, hgroup, menu, nav, section {
 /* 기본 10px */
 html {
   font-size:62.5%; 
+  cursor:url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDI0IDI4IiB3aWR0aD0iMjQiIGhlaWdodD0iMjgiPgoJPHRpdGxlPjk1NTQ1MDJfY3Vyc29yX21vdXNlX2RldmljZV9jb21wdXRlcl9nYWRnZXRfaWNvbi1zdmc8L3RpdGxlPgoJPHN0eWxlPgoJCS5zMCB7IGZpbGw6IG5vbmUgfSAKCQkuczEgeyBmaWxsOiAjMzg2YmZmIH0gCgkJLnMyIHsgZmlsbDogIzJlNjJlNSB9IAoJPC9zdHlsZT4KCTxwYXRoIGNsYXNzPSJzMCIgZD0ibTQxLTkwLjd2LTUuNSIvPgoJPGc+CgkJPHBhdGggY2xhc3M9InMxIiBkPSJtMC4xIDFsMy41IDI2LjRjMC4xIDAuNCAwLjcgMC41IDAuOSAwLjFsNi4xLTEwLjdjMC0wLjEgMC4yLTAuMiAwLjMtMC4ybDEyLjMtMS4xYzAuNCAwIDAuNi0wLjYgMC4yLTAuOWwtMjIuNi0xNC4xYy0wLjMtMC4yLTAuOCAwLjEtMC43IDAuNXoiLz4KCQk8cGF0aCBjbGFzcz0iczIiIGQ9Im0yMy4yIDE1LjVsLTEyLjMgMS4xYzAgMC0wLjEgMC0wLjIgMC4xbC0xMC40LTE2LjJjMC4yLTAuMSAwLjQtMC4xIDAuNiAwbDIyLjUgMTQuMWMwLjQgMC4zIDAuMyAwLjktMC4yIDAuOXoiLz4KCTwvZz4KPC9zdmc+'), auto;
 }
 
 /* 9px */
@@ -65,20 +66,12 @@ html {
   }
 } */
 
-:root {
-  --background: #f0f0f0;
-}
-
-.dark {
-  --background: #333;
-}
 
 body {
   line-height: 1;
   font-family: 'Pretendard-Regular', Malgun Gothic, Helvetica, sans-serif;
   font-size:1.6rem;
   background-color:var(--background);
-  // cursor:url('../../public/images/mouse.png') auto;
 }
 
 ol, ul {

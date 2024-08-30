@@ -19,7 +19,7 @@ const Header = () => {
           <Link href="/about" className={path.includes("/about") ? styles.active : ""}>About</Link>
         </nav>
         <div className={styles.button_wrap}>
-          <Link href="/" className={styles.github_button} target="_blank" aria-label="Github">
+          <Link href="https://github.com/BaeYeongGi" className={styles.github_button} target="_blank" aria-label="Github">
             <GitHub/>
           </Link>
           <ThemeButton/>
