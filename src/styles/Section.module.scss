@@ -10,6 +10,8 @@
   box-sizing:border-box;
   border-radius:1rem;
   min-height:150rem;
+  transition-duration: 0.2s;
+  transition-property: background-color;
   &.dark {
     background-color:$dark-bg;
     box-shadow:$boxShadow-dark;

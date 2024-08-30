@@ -26,7 +26,7 @@
     border-radius:2.6rem;
     background-color: $light-bg;
     box-shadow: $buttonConvex;
-    transition-property: right;
+    transition-property: right, background-color;
     transition-duration: 0.2s;
   }
   &.dark {
