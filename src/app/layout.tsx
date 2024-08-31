@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import "@/src/styles/global.scss";
 import { Suspense, useEffect } from "react";
-import Header from "@/src/components/Header";
-import TopButton from "@/src/components/TopButton";
-import Footer from "@/src/components/Footer";
-import Section from "@/src/components/Section";
-import { ThemeProvider } from "../components/ThemeProvider";
+import Header from "@/src/components/layouts/Header";
+import TopButton from "@/src/components/common/TopButton";
+import Footer from "@/src/components/layouts/Footer";
+import Section from "@/src/components/ui/Section";
+import { ThemeProvider } from "@/src/components/layouts/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "블로그",

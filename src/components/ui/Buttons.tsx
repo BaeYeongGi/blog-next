@@ -5,18 +5,19 @@ import { usePathname } from 'next/navigation';
 import { Email, GitHub, Language, Share  } from "@/public/images/svg";
 import Link from "next/link";
 import { useMemo } from 'react';
+import useStore from '@/src/store/store';
 
 interface ButtonDataType {
-  type: string,
+  type: string
 }
 
 const Buttons = ({type}: ButtonDataType) => {
   const { theme } = useTheme();
   const path = usePathname();
-
   const isAboutPage = useMemo(() => path.includes('/about'),[path]);
   const themeClassName = useMemo(() => (
     theme === 'dark' ? `${styles.buttons_wrap} ${styles.dark}` : styles.buttons_wrap),[theme]);
+  const { setIsPop } = useStore();
 
   const headerButtons = useMemo(() => (
     <>
@@ -31,8 +32,8 @@ const Buttons = ({type}: ButtonDataType) => {
 
   const aboutButtons = useMemo(() => (
     <>
-      <button className={styles.button_dark} aria-label="Email">
-      <Email/>
+      <button className={styles.button_dark} aria-label="Email" onClick={setIsPop}>
+        <Email/>
       </button>
       <button className={styles.button_dark} aria-label="공유하기">
         <Share/>

@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import styles from "@/src/styles/Header.module.scss";
-import ThemeButton from "@/src/components/ThemeButton";
-import Buttons from '@/src/components/Buttons';
+import ThemeButton from "@/src/components/ui/ThemeButton";
+import Buttons from '@/src/components/ui/Buttons';
 import { usePathname } from 'next/navigation';
 import { useTheme } from "next-themes"
 

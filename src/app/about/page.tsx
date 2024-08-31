@@ -2,8 +2,8 @@ import Image from 'next/image';
 import React from 'react';
 import Profile from '@/public/images/about/profile.png';
 import styles from '@/src/styles/About.module.scss';
-import { Email } from '@/public/images/svg';
-import Buttons from '@/src/components/Buttons';
+import Buttons from '@/src/components/ui/Buttons';
+import Popup from '@/src/components/ui/Popup';
 
 const Page = () => {
   const profile = [
@@ -28,6 +28,9 @@ const Page = () => {
       value: '1995',
     },
   ]
+
+
+
   return (
     <>
     <div className={styles.about_wrap}>
@@ -60,7 +63,7 @@ const Page = () => {
       <dd>사용자가 사용하기 좋은 페이지를 만드는 프론트엔드 개발자 입니다. 
       사용자에게 좋은 경험을 전달하는 일에 큰 보람을 느끼고 있습니다. 꼼꼼함과 디테일로 사용성에 핵심을 둔 화면을 완성하겠습니다.</dd>
     </dl>
-
+    <Popup/>
     </>
   );
 };
