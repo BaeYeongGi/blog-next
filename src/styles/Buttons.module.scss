@@ -1,0 +1,41 @@
+@import 'variables';
+
+
+.buttons_wrap {
+  position:relative;
+  display:flex;
+  .button, .button_dark {
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    margin-right:0.8rem;
+    width:3rem;
+    height:3rem;
+    border-radius:3rem;
+  }
+  .button {
+    @include buttonShadowStyle;
+    background-color:$light-bg;
+
+  }
+  .button_dark {
+    @include buttonShadowStyle-dark;
+    background-color:$dark-bg;
+    svg {
+      stroke:$dark-font;
+    }
+  }
+  svg {
+    width:2rem;
+    height:2rem;
+  }  
+  &.dark {
+    .button {
+      @include buttonShadowStyle-dark;
+      background-color:$dark-bg;
+      svg {
+        stroke:$dark-font;
+      }
+    }
+  }
+}

@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import styles from "@/src/styles/Header.module.scss";
-import { GitHub } from "@/public/images/svg";
 import ThemeButton from "@/src/components/ThemeButton";
+import Buttons from '@/src/components/Buttons';
 import { usePathname } from 'next/navigation';
 import { useTheme } from "next-themes"
 
@@ -18,10 +18,8 @@ const Header = () => {
           <Link href="/blog/list" className={path.includes("/blog") ? styles.active : ""}>Blog</Link>
           <Link href="/about" className={path.includes("/about") ? styles.active : ""}>About</Link>
         </nav>
-        <div className={styles.button_wrap}>
-          <Link href="https://github.com/BaeYeongGi" className={styles.github_button} target="_blank" aria-label="Github">
-            <GitHub/>
-          </Link>
+        <div className={styles.buttons_wrap}>
+          <Buttons type="header"/>
           <ThemeButton/>
         </div>
       </header>

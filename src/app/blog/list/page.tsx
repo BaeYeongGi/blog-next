@@ -17,7 +17,7 @@ export default async function List(){
       {
         setDateGenerateList.map((item) => {
           return (
-            <li key={item.slug}>
+            <li key={item.slug} >
               <Link href={`/blog/view/${item.slug}`} key={item.slug}>
                 <div className={styles.img_wrap}>
                   <Image src={item.data.thumbnail} alt=""  fill={true}/>
@@ -25,8 +25,7 @@ export default async function List(){
                 <p>{item.data.title}</p>
                 <p><Calendar/> {item.data.date}</p>
               </Link>
-            </li>
-  
+            </li>  
           )
         })
       }
