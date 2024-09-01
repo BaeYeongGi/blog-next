@@ -4,6 +4,7 @@ import Profile from '@/public/images/about/profile.png';
 import styles from '@/src/styles/About.module.scss';
 import Buttons from '@/src/components/ui/Buttons';
 import Popup from '@/src/components/ui/Popup';
+import Toast from '@/src/components/ui/Toast';
 
 const Page = () => {
   const profile = [
@@ -30,12 +31,9 @@ const Page = () => {
   ]
 
 
-
   return (
     <>
     <div className={styles.about_wrap}>
-
-
       <div className={styles.img_wrap}>
         <Image src={Profile} alt="배영기의 프로필 사진" width="180" height="202" className={styles.profile}/>
       </div>
@@ -64,6 +62,7 @@ const Page = () => {
       사용자에게 좋은 경험을 전달하는 일에 큰 보람을 느끼고 있습니다. 꼼꼼함과 디테일로 사용성에 핵심을 둔 화면을 완성하겠습니다.</dd>
     </dl>
     <Popup/>
+    <Toast/>
     </>
   );
 };

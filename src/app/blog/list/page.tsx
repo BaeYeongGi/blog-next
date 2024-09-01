@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { generateStaticParams } from '@/src/lib/post';
 import styles from '@/src/styles/List.module.scss';
 import Image from 'next/image';
-import { Calendar } from '@/public/images/svg';
+import { Calendar } from '@/public/images/svg/Calendar';
 
 export default async function List(){
   const generateList = await generateStaticParams();

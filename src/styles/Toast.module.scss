@@ -1,0 +1,27 @@
+@import 'variables';
+
+.toast {
+  display:flex;
+  align-items: center;
+  padding:0 2rem;
+  border-radius:1rem;
+  background-color:#eee;
+  height:4.4rem;
+  position:fixed;
+  bottom:2rem;
+  left:50%;
+  transform:translateX(-50%);
+  color:$light-font;
+  .text {
+    display:flex;
+    align-items: center;
+    font-size:1.8rem;
+    svg {
+      margin:0 0.8rem 0 0;
+      stroke:#009100;
+    }
+  }
+  &.active {
+    bottom:2rem;
+  }
+}

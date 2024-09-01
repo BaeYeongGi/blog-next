@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "@/src/styles/global.scss";
-import { Suspense, useEffect } from "react";
 import Header from "@/src/components/layouts/Header";
 import TopButton from "@/src/components/common/TopButton";
 import Footer from "@/src/components/layouts/Footer";
@@ -22,18 +21,12 @@ export default async function RootLayout({
     <html lang="ko">
       <body >
         <ThemeProvider>
-          <Suspense fallback={<h1>로딩중이야~</h1>}>
-            <Header/>
-          </Suspense>
-          <Suspense fallback={<h1>로딩중이야~</h1>}>
+          <Header/>
           <Section>
             {children}
             <TopButton />
           </Section>
-          </Suspense>
-          <Suspense fallback={<h1>로딩중이야~</h1>}>
           <Footer />
-          </Suspense>
         </ThemeProvider>
       </body>
     </html>

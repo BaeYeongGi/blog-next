@@ -1,11 +1,16 @@
 'use client';
 import styles from '@/src/styles/Buttons.module.scss';
-import { useTheme } from "next-themes"
+import { useTheme } from "next-themes";
 import { usePathname } from 'next/navigation';
-import { Email, GitHub, Language, Share  } from "@/public/images/svg";
+import { Email } from '@/public/images/svg/Email';
+import { GitHub } from '@/public/images/svg/GitHub';
+import { Language } from '@/public/images/svg/Language';
+import { Share } from '@/public/images/svg/Share';
 import Link from "next/link";
 import { useMemo } from 'react';
 import useStore from '@/src/store/store';
+
+
 
 interface ButtonDataType {
   type: string
@@ -32,7 +37,7 @@ const Buttons = ({type}: ButtonDataType) => {
 
   const aboutButtons = useMemo(() => (
     <>
-      <button className={styles.button_dark} aria-label="Email" onClick={setIsPop}>
+      <button className={styles.button_dark} aria-label="Email" onClick={() => setIsPop(true)}>
         <Email/>
       </button>
       <button className={styles.button_dark} aria-label="공유하기">

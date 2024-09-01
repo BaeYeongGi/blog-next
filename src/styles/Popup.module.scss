@@ -7,6 +7,23 @@
   top:0;
   left:0;
   background-color:rgba(0,0,0,0.8);
+  &.dark {
+    .popup {
+      background-color:#121212;
+      .input {
+        border-color:#121212;
+        background-color:#222;
+        box-shadow: $buttonConcave-dark;
+        &:focus {
+          outline-color:#222;
+        }        
+      }
+      .copy {
+        @include buttonShadowStyle-dark;
+        background-color:#222;
+      }
+    }
+  }
 }
 .popup {
   position:fixed;
@@ -15,9 +32,37 @@
   left:50%;
   transform:translate(-50%, -50%);
   background-color:$light-bg;
-  svg {
+  padding:2rem;
+  background-color:#eee;
+  border-radius:1rem;
+  display:flex;
+  .close {
     position:absolute;
     top:1rem;
     right:1rem;
+  }
+  .input {
+    width:20rem;
+    height:4rem;
+    background-color:#ddd;
+    padding:0 1rem;
+    font-size:1.8rem;
+    border-radius:0.6rem;
+    border:0;
+    box-shadow: $buttonConcave;
+    margin-right:0.8rem;
+    &:focus {
+      outline-color:#aaa;
+    }
+  }
+  .copy {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:4rem;
+    width:4rem;
+    background-color:#ddd;
+    border-radius:0.6rem;
+    @include buttonShadowStyle;
   }
 }

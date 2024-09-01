@@ -1,6 +1,7 @@
 'use client';
 import { useTheme } from "next-themes"
-import { Dark, Light } from "@/public/images/svg";
+import { Dark } from "@/public/images/svg/Dark";
+import { Light } from "@/public/images/svg/Light";
 import styles from "@/src/styles/ThemeButton.module.scss";
 
 const ThemeButton = () => {

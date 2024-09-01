@@ -1,5 +1,5 @@
 'use client';
-import { Up } from "@/public/images/svg";
+import { Up } from "@/public/images/svg/Up";
 import styles from "@/src/styles/TopButton.module.scss";
 import { useEffect, useState } from 'react';
 import { useTheme } from "next-themes"
