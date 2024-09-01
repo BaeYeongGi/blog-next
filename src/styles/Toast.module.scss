@@ -8,10 +8,12 @@
   background-color:#eee;
   height:4.4rem;
   position:fixed;
-  bottom:2rem;
+  bottom:-6.4rem;
   left:50%;
   transform:translateX(-50%);
   color:$light-font;
+  transition-property: bottom;
+  transition-duration:0.2s;
   .text {
     display:flex;
     align-items: center;

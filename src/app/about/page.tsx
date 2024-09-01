@@ -34,12 +34,14 @@ const Page = () => {
   return (
     <>
     <div className={styles.about_wrap}>
+
+
       <div className={styles.img_wrap}>
         <Image src={Profile} alt="배영기의 프로필 사진" width="180" height="202" className={styles.profile}/>
       </div>
       <div className={styles.codebox_container}>
         <div className={styles.codebox}>
-          <span className={styles.const}>const</span> <span className={styles.variables}>profile</span> = <span className={styles.bracelet}>{`{`}</span>{
+          <span className={styles.const}>const</span> <span className={styles.variables}>profile</span> <span className={styles.eqaul}>=</span> <span className={styles.bracelet}>{`{`}</span>{
             profile.map((item => {
               return (
                 <div key={item.id} className={styles.code}>
