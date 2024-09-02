@@ -13,7 +13,6 @@ export default async function List(){
     <div>
 
       <ul className={styles.list_wrap}>
-
       {
         setDateGenerateList.map((item) => {
           return (

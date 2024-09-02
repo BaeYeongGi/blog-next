@@ -68,10 +68,14 @@ html {
 
 :root {
   --background: #f0f0f0;
+  --font:#222;
+  --border: #ccc;
 }
 
 .dark {
   --background: #333;
+  --font:#f1f1f1;
+  --border: #363636;
 }
 
 body {
@@ -79,12 +83,21 @@ body {
   font-family: 'Pretendard-Regular', Malgun Gothic, Helvetica, sans-serif;
   font-size:1.6rem;
   background-color:var(--background);
+  color:var(--font);
   transition-property: background-color;
   transition-duration: 0.2s;
 }
 
 ol, ul {
   list-style: none;
+}
+li {
+  &::before {
+    background-color:var(--font);
+  }
+}
+hr {
+  background-color:var(--border);
 }
 blockquote, q {
   quotes: none;
@@ -107,18 +120,19 @@ table {
 a {
   text-decoration: none;
   cursor: pointer;
-  color: #000;
+  color:var(--font);
 }
 caption, legend {
   display:none;
 }
-
-h1, h2 {
+h1, h2, h3, h4 {
   font-size:inherit;
   font-weight: inherit;
   display:inline-block;
 }
-
+div {
+  border-color:var(--border);
+}
 
 /*
 font-family: 'Pretendard-Light', Malgun Gothic, Helvetica, sans-serif; 300
