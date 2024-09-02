@@ -13,8 +13,7 @@ const Toast = () => {
       setIsActive(true);
       const timerToast = setTimeout(() => {
         setIsToast({
-          state:false,
-          value:'이메일이 복사되었습니다!'
+          state:false
         });
       },3500)
       const timerActive = setTimeout(() => {

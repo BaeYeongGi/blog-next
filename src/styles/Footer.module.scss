@@ -3,19 +3,21 @@
 .footer {
   width:76.8rem;
   margin:0 auto 1rem auto;
-  font-family:'Pretendard-Bold';
   background-color:$light-bg;
   padding:2rem;
   box-sizing:border-box;
   box-shadow: $boxShadow;
   border-radius:1rem;
+  text-align:center;
   transition-property: background-color;
   transition-duration: 0.2s;
   &.dark {
     background-color:$dark-bg;
     box-shadow:$boxShadow-dark
   }
-
+  span {
+    font-family:$PretendarBold;
+  }
 }
 
 @media (max-width: 768px) {

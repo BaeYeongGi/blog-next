@@ -8,7 +8,7 @@ const Footer = () => {
   const { theme } = useTheme();
   return (
     <footer className={theme === 'dark' ? `${styles.footer} ${styles.dark}`: styles.footer}>
-      Footer
+      © 2024. <span>Yeonggi Bae</span> all rights reserved.
     </footer>
   );
 };
