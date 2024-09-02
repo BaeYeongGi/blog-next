@@ -9,8 +9,8 @@ import { Share } from '@/public/images/svg/Share';
 import Link from "next/link";
 import { useMemo } from 'react';
 import useStore from '@/src/store/store';
-
-
+import { isAndroidWebView } from '@/src/lib/navigator';
+import { Connect } from '@/public/images/svg/Connect';
 
 interface ButtonDataType {
   type: string
@@ -22,14 +22,29 @@ const Buttons = ({type}: ButtonDataType) => {
   const isAboutPage = useMemo(() => path.includes('/about'),[path]);
   const themeClassName = useMemo(() => (
     theme === 'dark' ? `${styles.buttons_wrap} ${styles.dark}` : styles.buttons_wrap),[theme]);
-  const { setIsPop } = useStore();
+  const { setIsPop, setIsToast } = useStore();
+
+  const shareEvent = async () => {
+    if(isAndroidWebView()){
+      await navigator.clipboard.writeText(path);
+      setIsToast({
+        state:true,
+        value:'페이지 URL이 복사되었습니다!'
+      });
+    } else if(navigator.share) {
+      await navigator.share({
+        title: document.title,
+        url: path
+      })
+    }
+  }
 
   const headerButtons = useMemo(() => (
     <>
       {isAboutPage && (
-        <button className={styles.button}><Language /></button>
+        <button title="Language" className={styles.button}><Language /></button>
       )}
-      <Link href="https://github.com/BaeYeongGi" className={styles.button} target="_blank" aria-label="Github">
+      <Link href="https://github.com/BaeYeongGi" className={styles.button} target="_blank" aria-label="Github" title="GitHub">
         <GitHub/>
       </Link>
     </>
@@ -37,11 +52,11 @@ const Buttons = ({type}: ButtonDataType) => {
 
   const aboutButtons = useMemo(() => (
     <>
-      <button className={styles.button_dark} aria-label="Email" onClick={() => setIsPop(true)}>
+      <button className={styles.button_dark} title="Email" aria-label="Email" onClick={() => setIsPop(true)}>
         <Email/>
       </button>
-      <button className={styles.button_dark} aria-label="공유하기">
-        <Share/>
+      <button className={styles.button_dark} title="공유하기" aria-label="공유하기" onClick={shareEvent}>
+        {isAndroidWebView() ? <Connect/> : <Share/>}
       </button>
     </>  
   ),[])

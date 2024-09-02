@@ -31,7 +31,10 @@ const Popup = () => {
   const copyEmail = () => {
     navigator.clipboard.writeText(email);
     setClickTime(true);
-    setIsToast(true);
+    setIsToast({
+      state:true,
+      value:'이메일이 복사되었습니다!'
+    });
     setTimeout(() => {
       setClickTime(false);
     },2000)

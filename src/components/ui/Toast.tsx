@@ -9,10 +9,13 @@ const Toast = () => {
   const { isToast, setIsToast } = useStore();
   const [ isActive, setIsActive ] = useState(false); 
   useEffect(() => {
-    if(isToast){
+    if(isToast.state){
       setIsActive(true);
       const timerToast = setTimeout(() => {
-        setIsToast(false);
+        setIsToast({
+          state:false,
+          value:'이메일이 복사되었습니다!'
+        });
       },3500)
       const timerActive = setTimeout(() => {
         setIsActive(false);
@@ -29,7 +32,7 @@ const Toast = () => {
       {
         isToast && (
           <div className={isActive ? `${styles.toast} ${styles.active}` : styles.toast}>
-            <p className={styles.text}><Check/>이메일이 복사되었습니다!</p>
+            <p className={styles.text}><Check/>{isToast.value}</p>
           </div>
         )
       }
