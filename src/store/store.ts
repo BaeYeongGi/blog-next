@@ -5,9 +5,17 @@ interface ToastState {
   value?: string;
 }
 
+interface PopState {
+  state: boolean;
+  value?: string;
+}
+
 interface storeType {
-  isPop:boolean,
-  setIsPop:(value:boolean) => void,
+  isPop: {
+    state: boolean,
+    value?: string
+  },
+  setIsPop:(pop: PopState) => void,
   isToast: {
     state: boolean,
     value?: string
@@ -16,8 +24,16 @@ interface storeType {
 }
 
 const useStore = create<storeType>()((set) => ({
-  isPop: false,
-  setIsPop: (value: boolean) => set({isPop: value}),
+  isPop: {
+    state: false,
+    value: '' 
+  },
+  setIsPop: (pop: PopState) => set({
+    isPop: {
+      state: pop.state,
+      value: pop.value
+    }
+  }),
   isToast: {
     state: false, 
     value: ''

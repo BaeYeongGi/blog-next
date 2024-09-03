@@ -44,17 +44,23 @@ const Buttons = ({type}: ButtonDataType) => {
   const headerButtons = useMemo(() => (
     <>
       {isAboutPage && (
-        <button title="Language" className={styles.button}><Language /></button>
+        <button title="Language" onClick={() => setIsPop({
+          state:true,
+          value:'language'
+        })}className={styles.button}><Language /></button>
       )}
       <Link href="https://github.com/BaeYeongGi" className={styles.button} target="_blank" aria-label="Github" title="GitHub">
         <GitHub/>
       </Link>
     </>
-  ),[isAboutPage])
+  ),[isAboutPage, setIsPop])
 
   const aboutButtons = useMemo(() => (
     <>
-      <button className={styles.button_dark} title="Email" aria-label="Email" onClick={() => setIsPop(true)}>
+      <button className={styles.button_dark} title="Email" aria-label="Email" onClick={() => setIsPop({
+        state: true,
+        value:'email'
+      })}>
         <Email/>
       </button>
       <button className={styles.button_dark} title="공유하기" aria-label="공유하기" onClick={shareEvent}>

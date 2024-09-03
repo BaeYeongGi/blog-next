@@ -7,6 +7,7 @@ import styles from '@/src/styles/Popup.module.scss';
 import { useTheme } from "next-themes";
 import useStore from '@/src/store/store';
 import { useState, useMemo, useEffect } from 'react';
+import Link from 'next/link';
 
 const Popup = () => {
   const { isPop, setIsPop, setIsToast } = useStore();
@@ -15,7 +16,7 @@ const Popup = () => {
   const email = 'byg5913@gmail.com';
 
   useEffect(() => {
-    if(isPop){
+    if(isPop.state){
       document.body.style.overflow = 'hidden';
     } else {
       document.body.removeAttribute('style');
@@ -23,10 +24,12 @@ const Popup = () => {
     return () => {
       document.body.removeAttribute('style');
     }
-  },[isPop])
+  },[isPop.state])
 
   const closePop = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.target === e.currentTarget && setIsPop(false);
+    e.target === e.currentTarget && setIsPop({
+      state: false
+    });
   }
   const copyEmail = () => {
     navigator.clipboard.writeText(email);
@@ -51,16 +54,32 @@ const Popup = () => {
   },[clickTime])
 
   return (
-    isPop && (
+    isPop.state && (
       <div className={themeClassName} onClick={closePop}>
         <div className={styles.popup} role="dialog">
-          <button className={styles.close}  onClick={() => setIsPop(false)} aria-label="이메일 팝업 창 닫기">
+          <button className={styles.close}  onClick={() => setIsPop({
+            state:false
+          })} aria-label={'팝업 창 닫기'}>
             <Close/>
           </button>
-          <input className={styles.input} type="text" value={email} readOnly />
-          <button className={styles.copy} onClick={copyEmail}>
-            {copyIcon}
-          </button>
+          {
+            isPop.value === 'email' && (
+              <>
+                <input className={styles.input} type="text" value={email} readOnly />
+                <button className={styles.copy} onClick={copyEmail}>
+                  {copyIcon}
+                </button>
+              </>
+            )
+          }
+          {
+            isPop.value === 'language' && (
+              <div className={styles.links}>
+                <Link href="#">한국어</Link>
+                <Link href="#">English</Link>
+              </div>
+            )
+          }
         </div>
       </div>
     )
