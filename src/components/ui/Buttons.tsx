@@ -7,7 +7,7 @@ import { GitHub } from '@/public/images/svg/GitHub';
 import { Language } from '@/public/images/svg/Language';
 import { Share } from '@/public/images/svg/Share';
 import Link from "next/link";
-import { useMemo } from 'react';
+import { useMemo, useCallback } from 'react';
 import useStore from '@/src/store/store';
 import { isAndroidWebView } from '@/src/lib/navigator';
 import { Connect } from '@/public/images/svg/Connect';
@@ -24,7 +24,7 @@ const Buttons = ({type}: ButtonDataType) => {
     theme === 'dark' ? `${styles.buttons_wrap} ${styles.dark}` : styles.buttons_wrap),[theme]);
   const { setIsPop, setIsToast } = useStore();
 
-  const shareEvent = async () => {
+  const shareEvent = useCallback(async () => {
     if(isAndroidWebView()){
       await navigator.clipboard.writeText(path);
       setIsToast({
@@ -37,8 +37,10 @@ const Buttons = ({type}: ButtonDataType) => {
         url: path
       })
     }
-  }
+  },[path, setIsToast])
 
+
+  
   const headerButtons = useMemo(() => (
     <>
       {isAboutPage && (
@@ -59,7 +61,7 @@ const Buttons = ({type}: ButtonDataType) => {
         {isAndroidWebView() ? <Connect/> : <Share/>}
       </button>
     </>  
-  ),[])
+  ),[setIsPop, shareEvent])
 
   return (
     <div className={themeClassName}>  
