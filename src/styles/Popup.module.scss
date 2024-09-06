@@ -82,7 +82,9 @@
   a {
     display:flex;
     align-items:center;
-    padding:0 3rem;
+    text-align:center;
+    justify-content: center;
+    width:10rem;
     height:4rem;
     border-radius:1rem;
     @include buttonShadowStyle;
