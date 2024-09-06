@@ -4,6 +4,7 @@ import { Close } from '@/public/images/svg/Close';
 import { Copy } from '@/public/images/svg/Copy';
 import { Check } from '@/public/images/svg/Check';
 import styles from '@/src/styles/Popup.module.scss';
+import { usePathname } from 'next/navigation';
 import { useTheme } from "next-themes";
 import useStore from '@/src/store/store';
 import { useState, useMemo, useEffect } from 'react';
@@ -11,6 +12,7 @@ import Link from 'next/link';
 
 const Popup = () => {
   const { isPop, setIsPop, setIsToast } = useStore();
+  const path = usePathname();
   const { theme } = useTheme();
   const [ clickTime, setClickTime ] = useState(false);
   const email = 'byg5913@gmail.com';
@@ -75,8 +77,8 @@ const Popup = () => {
           {
             isPop.value === 'language' && (
               <div className={styles.links}>
-                <Link href="#">한국어</Link>
-                <Link href="#">English</Link>
+                <Link href="/about/ko" className={path.includes('/ko') ? styles.active : ''}>한국어</Link>
+                <Link href="/about/en" className={path.includes('/en') ? styles.active : ''}>English</Link>
               </div>
             )
           }
