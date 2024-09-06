@@ -7,7 +7,9 @@ import { Calendar } from '@/public/images/svg/Calendar';
 export default async function List(){
   const generateList = await generateStaticParams();
   // 최신 날짜 순으로 포스트 정렬
+
   const setDateGenerateList = generateList.sort((a, b) => +new Date(b.data.date) - +new Date(a.data.date));
+
 
   return (
     <div>

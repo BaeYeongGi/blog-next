@@ -32,6 +32,7 @@ export function generateStaticParams() {
 }
 
 const Page = ({ params }: PageProps) => {
+
   const data = DATAS[params.locale].data.RESUME;
   const skills = [
     {id: 0,skill: 'Javascript'},
@@ -49,7 +50,7 @@ const Page = ({ params }: PageProps) => {
     <>
     <div className={styles.about_wrap}>
       <div className={styles.img_wrap}>
-        <h1><Image src={Profile} alt="배영기" width="180" height="202" className={styles.profile}/></h1>
+        <Image src={Profile} alt="배영기" fill={true} className={styles.profile}/>
       </div>
       <div className={styles.codebox_container}>
         <div className={styles.codebox}>

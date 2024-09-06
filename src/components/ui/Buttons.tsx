@@ -26,7 +26,7 @@ const Buttons = ({type}: ButtonDataType) => {
 
   const shareEvent = useCallback(async () => {
     if(isAndroidWebView()){
-      await navigator.clipboard.writeText(path);
+      await navigator.clipboard.writeText(window.location.href);
       setIsToast({
         state:true,
         value:'페이지 URL이 복사되었습니다!'
