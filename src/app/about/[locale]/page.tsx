@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import Profile from '@/public/images/about/profile.png';
+import Profile from '@/public/images/profile.png';
 import styles from '@/src/styles/About.module.scss';
 import Buttons from '@/src/components/ui/Buttons';
 import Popup from '@/src/components/ui/Popup';
@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { ConnectLink } from '@/public/images/svg/ConnectLink';
 import RESUME_KO from '@/src/data/resume-ko.json';
 import RESUME_EN from '@/src/data/resume-en.json';
+import { Metadata } from 'next';
 
 const DATAS = {
   ko: {
@@ -31,6 +32,18 @@ export function generateStaticParams() {
   return (Object.keys(DATAS) as Locale[]).map((locale) => ({ locale }));
 }
 
+export function generateMetadata({ params }: PageProps): Metadata {
+  const data = DATAS[params.locale].data.RESUME;
+
+  return {
+    title: `${data.profile[1].value} | ${data.summary}`,
+    description: data.about,
+    openGraph: {
+      images: [`/images/og/og_image_${params.locale}.png`]
+    }
+  };
+}
+
 const Page = ({ params }: PageProps) => {
 
   const data = DATAS[params.locale].data.RESUME;
@@ -50,7 +63,7 @@ const Page = ({ params }: PageProps) => {
     <>
     <div className={styles.about_wrap}>
       <div className={styles.img_wrap}>
-        <Image src={Profile} alt="배영기" fill={true} className={styles.profile}/>
+        <h1><Image src={Profile} alt={data.profile[1].value} fill={true} className={styles.profile}/></h1>
       </div>
       <div className={styles.codebox_container}>
         <div className={styles.codebox}>
