@@ -18,3 +18,13 @@ export async function generateStaticParams() {
     }
   })
 };
+
+export async function getSitemapPostList(){
+  const postList = await getPostList();
+  const baseUrl = 'https://blog-next-sigma-ten.vercel.app';
+  const sitemapPostList = postList.map(({ slug }) => ({
+    lastModified: new Date(),
+    url: `${baseUrl}/${slug}`
+  }));
+  return sitemapPostList;
+}
