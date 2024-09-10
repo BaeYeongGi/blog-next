@@ -1,7 +1,8 @@
+import type { MetadataRoute } from 'next';
 import { getSitemapPostList } from "@/src/lib/post";
 
-export default async function sitemap(){
-  const postSitemapList = await getSitemapPostList();
+export default function sitemap(): MetadataRoute.Sitemap {
+  const postSitemapList = getSitemapPostList();
   const baseUrl = 'https://blog-next-sigma-ten.vercel.app';
   return [
     {
