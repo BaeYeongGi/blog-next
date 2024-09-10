@@ -24,7 +24,7 @@ export function getSitemapPostList(){
   const baseUrl = 'https://blog-next-sigma-ten.vercel.app';
   const sitemapPostList = postList.map(({ slug }) => ({
     lastModified: new Date(),
-    url: `${baseUrl}/${slug}`
+    url: `${baseUrl}/blog/view/${slug}`
   }));
   return sitemapPostList;
 }
