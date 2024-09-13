@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fec/remark-a11y-emoji": "^4.0.2",
     "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",
     "next": "14.2.6",
@@ -16,6 +17,8 @@
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
+    "rehype-pretty-code": "^0.14.0",
+    "shiki": "^1.17.5",
     "zustand": "^4.5.5"
   },
   "devDependencies": {
@@ -24,6 +27,7 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.6",
+    "remark-gfm": "^4.0.0",
     "sass": "^1.77.8",
     "typescript": "^5"
   }

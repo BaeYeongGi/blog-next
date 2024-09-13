@@ -21,8 +21,9 @@ export default async function List(){
                 <div className={styles.img_wrap}>
                   <Image src={item.data.thumbnail} alt=""  fill={true}/>
                 </div>
-                <p>{item.data.title}</p>
-                <p><Calendar/> {item.data.date}</p>
+                <div className={styles.date}><Calendar/> {item.data.date}</div>
+                <h2 className={styles.title}>{item.data.title}</h2>
+
               </Link>
             </li>  
           )
