@@ -30,10 +30,10 @@ export default async function List(){
         })
       }
         </ul>
-        <div className={styles.dimmed}>
+        {/* <div className={styles.dimmed}>
           <p>페이지 준비중 입니다 🦖</p>
           <Link href="/about/ko">ABOUT ➡️</Link>
-        </div>
+        </div> */}
     </div>
   )
 }

@@ -7,6 +7,8 @@ import styles from '@/src/styles/View.module.scss';
 import { Calendar } from '@/public/images/svg/Calendar';
 import remarkGfm from 'remark-gfm';
 import rehypePrettyCode from 'rehype-pretty-code';
+import ExternalLink from '@/src/components/mdx/Link';
+
 
 interface BlogPostProps {
   source: MDXRemoteSerializeResult;
@@ -18,6 +20,10 @@ interface BlogPostProps {
 }
 // MDX 파일 경로
 const POSTS_DIR = path.join(process.cwd(), 'src', 'posts', 'view');
+
+const MdxComonents = {
+  a: ExternalLink as any
+}
 
 export async function generateMetadata({params}: {params: {slug: string}}){
   const { slug } = params as {slug:string};
@@ -49,7 +55,7 @@ export default async function View({ params }: {params: {slug: string} }){
             mdxOptions: {
               remarkPlugins: [
                 // GitHub Flavored 마크다운 지원 추가
-                // remarkGfm
+                remarkGfm
               ],
               rehypePlugins: [
                 [
@@ -62,6 +68,7 @@ export default async function View({ params }: {params: {slug: string} }){
               ]
             }
           }}
+          components={MdxComonents}
         />
       </div>
 

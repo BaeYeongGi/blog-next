@@ -10,3 +10,34 @@ thumbnail: "/images/posts/blog/thumbnail.png"
 ### 이곳에 MDX 콘텐츠를 작성하세요!
 
 블로그 포스트의 내용을 여기에 작성할 수 있습니다.
+
+[Utterance](https://github.com/utterance/utterances)
+[Next-MDX-Remote](https://github.com/hashicorp/next-mdx-remote#react-server-components-rsc--nextjs-app-directory-support)
+
+
+```shell
+npx shadcn-ui@latest init
+```
+
+```ts {5-6}
+import fs from 'fs';
+import matter from 'gray-matter';
+
+const parsePost = async (postPath: string) => {
+  const file = fs.readFileSync(postPath, 'utf8');
+  const { data, content } = matter(file);
+};
+```
+
+```terminal {1}
+Would you like to use TypeScript (recommended)? yes
+Which style would you like to use? › Default
+Which color would you like to use as base color? › Slate
+Where is your global CSS file? › › app/globals.css
+Do you want to use CSS variables for colors? › yes
+Are you using a custom tailwind prefix eg. tw-? (Leave blank if not) ...
+Where is your tailwind.config.js located? › tailwind.config.js
+Configure the import alias for components: › @/components
+Configure the import alias for utils: › @/lib/utils
+Are you using React Server Components? › yes
+```
