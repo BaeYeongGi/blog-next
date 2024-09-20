@@ -10,8 +10,6 @@ import rehypeSlug from 'rehype-slug';
 import { getHeadingId } from '@/src/lib/post';
 import TitleNavigation from '@/src/components/mdx/TitleNavigation';
 
-
-
 interface BlogPostProps {
   source: MDXRemoteSerializeResult;
   frontMatter: {

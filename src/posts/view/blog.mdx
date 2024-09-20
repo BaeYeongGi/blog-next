@@ -8,7 +8,7 @@ thumbnail: "/images/posts/blog/thumbnail.png"
 ![](/images/posts/blog/thumbnail.png)
 
 
-## 개요
+## 개요1
 
 
 
@@ -21,15 +21,9 @@ thumbnail: "/images/posts/blog/thumbnail.png"
  `/src/posts/view/blog.mdx`
 
 
-## 과정
+## 과정2
 
 
-## 레퍼런스
-
-
-## 개발 환경
-
-## 개발
 
 ```shell
 npx shadcn-ui@latest init
@@ -45,12 +39,22 @@ npx shadcn-ui@latest init
 import fs from 'fs';
 import matter from 'gray-matter';
 
+
+
 // 주석처리
 const parsePost = async (postPath: string) => {
   const file = fs.readFileSync(postPath, 'utf8');
   const { data, content } = matter(file);
 };
 ```
+
+
+## 레퍼런스3
+
+
+
+
+
 
 ```terminal {1}
 Would you like to use TypeScript (recommended)? yes
@@ -64,8 +68,7 @@ Configure the import alias for components: › @/components
 Configure the import alias for utils: › @/lib/utils
 Are you using React Server Components? › yes
 ```
-
-
+## 개발 환경4
 
 ```bash
 📦app
@@ -100,6 +103,7 @@ export default function RootLayout({
   );
 }
 ```
+## 개발5
 
 
 ```json title="aaa.json"
