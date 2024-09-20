@@ -6,21 +6,86 @@
       display:block;
       width:100%;
       max-width:500px;
-      margin:0 auto;
+      margin:0 auto 2rem auto;
       border-radius:1rem;
+    }
+    ul {
+      margin: 0 0 2rem 0;
+      > li {
+        line-height:1.4;
+        &::before {
+          background-color:transparent;
+          content:'- ';
+          
+        }
+      }
     }
     h2 {
       font-size:2.4rem;
       font-family:$PretendarBold;
+      scroll-margin-top:6rem;
     }
-    h3 {
+    p {
+      code {
+        display:inline-block;
+        color:#eb5757;
+        font-family:$PretendarLight;
+        background-color:#eee;
+        padding:1rem;
+        border-radius:1rem;
+        margin:0 0 1rem 0;
+      }
+    }
+    pre {
+      background-color:transparent !important;
+    }
+    figure {
+      figcaption {
+        background-color:#191919;
+        color:#fff;
+        padding:1rem;
+        border-radius:1rem 1rem 0 0;
+        border:1px solid #444;
+        border-bottom:0;
+      }
+      code {
+        background-color:#191919;
+        font-family:$PretendarLight;
+        line-height:1.3;
+        padding:1rem;
+        margin:0 0 1rem 0;
+        border-radius:0 0 1rem 1rem;
+        border:1px solid #444;
+        overflow-x:auto;
+        overflow-y:hidden;
+        &::-webkit-scrollbar {
+          height:1rem;
+          border-radius:1rem;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: #2f3542;
+          border-radius:1rem;
 
+        }
+        &::-webkit-scrollbar-track {
+          background-color: #666;
+          border-radius:1rem;
+
+        }
+
+        span[data-highlighted-line] {
+          background-color:#00365d;
+          margin:0 -1rem;
+          padding:0 1rem;
+        }
+      }
     }
-    code {
-      font-family:$PretendarLight;
-      line-height:1.3;
+    blockquote {
+      color:#222;
+      background-color:#fff9da;
       padding:1rem;
       margin:0 0 1rem 0;
+      border-radius:1rem;
     }
   }
 
@@ -54,4 +119,11 @@
 .link {
   font-family:$PretendarBold;
   color: #006fd6;
+}
+
+.navigation {
+  position:fixed;
+  top:6rem;
+  left:calc(50% + 43rem);
+  transform:translateX(-50%);
 }

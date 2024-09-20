@@ -7,22 +7,45 @@ thumbnail: "/images/posts/blog/thumbnail.png"
 
 ![](/images/posts/blog/thumbnail.png)
 
-### 이곳에 MDX 콘텐츠를 작성하세요!
+
+## 개요
+
+
 
 블로그 포스트의 내용을 여기에 작성할 수 있습니다.
 
-[Utterance](https://github.com/utterance/utterances)
+[link link](www.nate.com)
 [Next-MDX-Remote](https://github.com/hashicorp/next-mdx-remote#react-server-components-rsc--nextjs-app-directory-support)
 
+
+ `/src/posts/view/blog.mdx`
+
+
+## 과정
+
+
+## 레퍼런스
+
+
+## 개발 환경
+
+## 개발
 
 ```shell
 npx shadcn-ui@latest init
 ```
 
+- bucket name
+- AWS region
+- filename
+
+> blockquote
+
 ```ts {5-6}
 import fs from 'fs';
 import matter from 'gray-matter';
 
+// 주석처리
 const parsePost = async (postPath: string) => {
   const file = fs.readFileSync(postPath, 'utf8');
   const { data, content } = matter(file);
@@ -41,3 +64,51 @@ Configure the import alias for components: › @/components
 Configure the import alias for utils: › @/lib/utils
 Are you using React Server Components? › yes
 ```
+
+
+
+```bash
+📦app
+ ┣ 📂folder
+ ┃ ┗ 📂sample
+ ┃ ┃ ┗ 📜route.ts
+ ┣ 📜favicon.ico
+ ┣ 📜globals.css
+ ┣ 📜layout.tsx
+ ┗ 📜page.tsx
+```
+
+```tsx title="layout.tsx"
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="ko">
+      <body >
+        <ThemeProvider>
+          <Header/>
+          <Section>
+            {children}
+            <TopButton />
+          </Section>
+          <Footer />
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+
+```json title="aaa.json"
+{
+  title: 'title',
+  date: 2024-02-26T00:00:00.000Z,
+  desc: 'blog',
+  thumbnail: 'thumbnail.jpg'
+}
+```
+This is an H1
+=============

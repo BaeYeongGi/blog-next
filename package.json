@@ -18,7 +18,6 @@
     "react": "^18",
     "react-dom": "^18",
     "rehype-pretty-code": "^0.14.0",
-    "shiki": "^1.17.5",
     "zustand": "^4.5.5"
   },
   "devDependencies": {
@@ -27,6 +26,7 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.6",
+    "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.0",
     "sass": "^1.77.8",
     "typescript": "^5"

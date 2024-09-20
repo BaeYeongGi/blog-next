@@ -28,3 +28,13 @@ export function getSitemapPostList(){
   }));
   return sitemapPostList;
 }
+
+export function getHeadingId(content: string){
+  const regex = /^(##|###) (.*$)/gim;
+  const headingList = content.match(regex);
+  return (
+    headingList?.map((item) => ({
+      link: item.replace('##', '#').replace(' ', '').replace(' ', '-')
+    }))
+  )
+}
