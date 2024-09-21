@@ -34,7 +34,7 @@ export function getHeadingId(content: string){
   const headingList = content.match(regex);
   return (
     headingList?.map((item) => ({
-      link: item.replace('##', '#').replace(' ', '').replace(' ', '-')
+      link: item.replace('##', '#').replace(' ', '').replaceAll(' ', '-')
     }))
   )
 }
