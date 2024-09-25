@@ -20,7 +20,8 @@ const Header = () => {
     const scrollTop = window.scrollY;
     const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
     const scrollValue = (scrollTop / documentHeight) * 100;
-    setScrollPercent(scrollValue);
+    setScrollPercent(Math.floor(scrollValue >= 100 ? 100 : scrollValue));
+
   }
 
   useEffect(() => {
@@ -49,7 +50,7 @@ const Header = () => {
 
   const r = 18; //반지름
   const circumference = 2 * Math.PI * r; // 원의 둘레
-  const offset = circumference - (Math.floor(scrollPercent) / 100) * circumference; // value에 따른 stroke-dashoffset 계산
+  const offset = circumference - (scrollPercent / 100) * circumference; // value에 따른 stroke-dashoffset 계산
 
   const setHeaderClassName = () => {
     if(fixed){
@@ -75,7 +76,7 @@ const Header = () => {
             <circle className={styles.frame} fill="none" cx="20" cy="20" r={r} strokeWidth="2" />
             <circle className={styles.bar} fill="none" cx="20" cy="20" r={r} strokeWidth="2" strokeDasharray={circumference} strokeDashoffset={offset} />
           </svg>
-          <p className={styles.value}>{4 < Math.floor(scrollPercent) && Math.floor(scrollPercent)}</p>
+          <p className={styles.value}>{4 < scrollPercent && scrollPercent}</p>
         </div>        
       </header>
 

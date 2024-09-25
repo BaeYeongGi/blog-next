@@ -38,10 +38,11 @@
     font-size:1.6rem;
     display:none;
     align-items: center;
-    border:1px solid #aaa;
+    border:1px solid #444;
     border-radius:1rem;
     margin:0 0 1rem 0;
     padding:0.6rem 1rem;
+    color:inherit;
     &.active {
       svg {
         transform:rotate(180deg);
@@ -67,7 +68,8 @@
     margin:0 0 1rem 0;
     ul {
       display:none;
-      border:1px solid #aaa;
+      border:1px solid #ccc;
+   
       border-radius:1rem;
       padding:1rem 2rem;
       box-sizing:border-box;
@@ -76,6 +78,7 @@
       }
       > li {
         > a {
+          display:block;
           font-family:$PretendarBold;
           &.active {
             font-size:1.6rem;
@@ -85,6 +88,17 @@
     }
     .page_titles_button {
       display:flex;
+      border-color:#ccc;
+    }
+    &.dark {
+      &.navigation {
+        ul {
+          border-color: #444;
+        }
+        .page_titles_button {
+          border-color:#444;
+        }
+      }
     }
   }
 }

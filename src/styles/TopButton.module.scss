@@ -12,6 +12,7 @@
   background-color:$light-bg;
   transition-duration: 0.3s;
   transition-property: bottom;
+  color:inherit;
   @include buttonShadowStyle;
   svg {
     width:2.6rem;
