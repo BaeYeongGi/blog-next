@@ -15,7 +15,7 @@ interface TitleNavigationPropsType {
 const TitleNavigation = ({ data }: TitleNavigationPropsType) => {
   const { theme } = useTheme();
   const [ showTitles, setShowTitles ] = useState(false);
-  const activeIdList = useHeadingObserver('h2')
+  const activeId = useHeadingObserver('h2')
 
   const toggleTitlesList = () => {
     setShowTitles(prev => !prev);
@@ -27,7 +27,7 @@ const TitleNavigation = ({ data }: TitleNavigationPropsType) => {
       <ul className={showTitles ? styles.active : ''}>
         {data?.map((item, index) => (
           <li key={index}>
-            <a href={item.link} className={activeIdList?.includes(item.link) ? styles.active : ''}>
+            <a href={item.link} className={activeId === item.link ? styles.active : ''}>
               {item.link.replace('#', '').replaceAll('-', ' ')}
             </a>
           </li>

@@ -13,19 +13,24 @@ thumbnail: "/images/posts/blog/thumbnail.png"
 
 ## 기술스택
 
+**1) 프레임워크:** Next.js
 
-asfsdfgssdf
+현업에서도 실제 프로젝트에 사용해보기 위해, 사용법도 익힐겸 Next.js 프레임 워크를 선택했습니다. 
 
-프레임워크: Next.js
+**2) 스타일:** css module + SCSS
 
-스타일: SCSS 
+처음부터 직접 한땀한땀 스타일을 다루는데에 익숙하고 현업에서 활용하는게 익숙해서 선택한 css module + scss 입니다. 이름 그대로 모듈 방식으로 작성하여 클래스 이름이 고유하게 컴파일 되어 동일한 클래스명 이더라도 충돌을 방지할 수 있는 장점이 마음에 들었습니다. 
 
-글쓰기: MDX  
+**3) 글쓰기:** MDX  
 
-배포: Vercel
+README 파일이나 코드 설명등을 작성할 때 필요한 마크다운 문법에 익숙해지기 위해 선택했습니다. 마크다운 문법으로 생성된 요소를 제가 자유롭게 원하는 모양으로 커스텀 할 수 있다는 게 매력적이었습니다!
 
-[link link](www.nate.com)
-[Next-MDX-Remote](https://github.com/hashicorp/next-mdx-remote#react-server-components-rsc--nextjs-app-directory-support)
+**4) 글파싱:** gray-matter + next-mdx-remote
+
+- gray-matter: 마크다운 파일로 블로그를 생성할때 mdx 파일 상단에 있는, 프론트매터(front matter, 메타데이터 블록) 에 접근하기 위해 사용하였습니다.
+- next-mdx-remote: sss
+
+**5) 배포:** Vercel
 
 
 
@@ -121,5 +126,3 @@ export default function RootLayout({
   thumbnail: 'thumbnail.jpg'
 }
 ```
-This is an H1
-=============

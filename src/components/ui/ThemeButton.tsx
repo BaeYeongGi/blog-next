@@ -12,10 +12,15 @@ const ThemeButton = () => {
   }
 
   useEffect(() => {
-    // system && 기기 다크모드 상태일 경우 
-    const deviceDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-    if(theme === 'system' && deviceDarkMode ){
+    // system && 기기 theme setting
+    const deviceDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const deviceLightMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+
+    if(theme === 'system' && deviceDarkMode){
       setTheme('dark');
+    }
+    if(theme === 'system' && deviceLightMode){
+      setTheme('light');
     }
   },[theme, setTheme])
 
