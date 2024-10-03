@@ -19,7 +19,7 @@ interface BlogPostProps {
   };
 }
 // MDX 파일 경로
-const POSTS_DIR = path.join(process.cwd(), 'src', 'posts', 'view');
+const POSTS_DIR = path.join(process.cwd(), 'src', 'posts');
 
 const MdxComponents = {
   a: ExternalLink as any
@@ -41,7 +41,6 @@ export default async function View({ params }: {params: {slug: string} }){
   const fileContents = await fsPromises.readFile(filePath, "utf8");
   const { data, content } = matter(fileContents);
   const haedingList = getHeadingId(content);
-
   return (
     <>
       <h1 className={styles.title}>{data.title}</h1>

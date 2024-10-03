@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import matter from 'gray-matter';
 
-const POSTS_DIR = path.join(process.cwd(), 'src', 'posts', 'view');
+const POSTS_DIR = path.join(process.cwd(), 'src', 'posts');
 
 // 모든 MDX 파일 조회
 export function getPostList() {

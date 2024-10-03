@@ -62,7 +62,7 @@ css module + sass 를 사용하기때문에, Tailwind 는 선택하지 않았습
 
 **2) SCSS**
 
-```shell title="sass install"
+```shell title="install sass"
 npm install sass -D
 ```
 
@@ -87,12 +87,72 @@ scss 파일로 사용하기 위해 sass를 설치합니다. css module과 사용
  ┗ 📂styles
 ```
 
+---
+
 ## 개발
 
 **1) 게시글 저장**
 
+작성한 모든 게시글은 `src/posts` 디렉토리에 저장했습니다.
+
+개발 진행을 위해 게시글을 하나 생성하였습니다. `src/posts/blog.mdx`
+
+
+```code title="blog.mdx"
+---
+title: "개인 블로그 만들기 Next.js 14"
+date: "2024-08-27"
+summary: "Next.js 와 MDX 마크다운 파일로 개인 블로그를 예쁘게 만들어 봅시다😊"
+thumbnail: "/images/posts/blog/thumbnail.png"
+---
+![](/images/posts/blog/thumbnail.png)
+```
+
 **2) 게시글 파싱**
 
+게시글 파싱을 위해 [gray-matter](https://github.com/jonschlinkert/gray-matter)를 설치합니다.
+
+```shell title="install gray-matter & fs"
+npm install gray-matter fs
+```
+
+fs 패키지를 통해 파일을 읽는 코드도 함께 작성해주고, `matter` 함수에 인자로 전달하면, `data` 와 `content` 값을 얻을 수 있습니다. 게시글 파일을 파싱하는 함수는 아래처럼 작성할 수 있습니다.
+
+```tsx title="src/app/blog/view/[slug]/page.tsx"
+import { promises as fsPromises } from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+
+// MDX 파일 경로
+const POSTS_DIR = path.join(process.cwd(), 'src', 'posts');
+
+export default async function View({ params }: {params: {slug: string} }){
+  const { slug } = params;
+  const filePath = path.join(POSTS_DIR, `${slug}.mdx`);
+  const fileContents = await fsPromises.readFile(filePath, "utf8");
+  const { data, content } = matter(fileContents);
+}
+
+```
+
+`data`는 아래와 같이 mdx 파일의 front matter 를 가져옵니다.
+
+```code title="blog.mdx front-matter"  
+{
+  title: '개인 블로그 만들기 Next.js 14',
+  date: '2024-08-27',
+  summary: 'Next.js 와 MDX 마크다운 파일로 개인 블로그를 예쁘게 만들어 봅시다😊',
+  thumbnail: '/images/posts/blog/thumbnail.png'
+}
+```
+
+`content`는 아래와 같이 mdx 파일의 front-matter를 제외한 하단의 내용을 가져옵니다.
+
+```code title="blog.mdx content"
+![](/images/posts/blog/thumbnail.png)
+```
+
+위와 같이 파싱 정보 객체 하나를 가공하면 글 상세 페이지를 보여줄 수 있고, 게시글 파일을 여러개 생성 후, 파싱 정보 리스트를 보여주면 글 목록 페이지를 만들 수 있습니다!
 
 **3) 게시글 목록 페이지**
 
@@ -126,8 +186,6 @@ const parsePost = async (postPath: string) => {
 
 
 
-## 개발 환경4
-
 
 
 ```tsx title="layout.tsx"
@@ -152,7 +210,6 @@ export default function RootLayout({
   );
 }
 ```
-## 개발5
 
 
 ```json title="aaa.json"
