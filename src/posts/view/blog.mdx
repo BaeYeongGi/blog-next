@@ -9,41 +9,97 @@ thumbnail: "/images/posts/blog/thumbnail.png"
 
 ## 개요
 
-퍼블리셔로 열심히 일하던 시절 [네이버 블로그](https://blog.naver.com/byk5913)에 학습내용을 기록하면서 편하게 이용했지만, 새로운 마음으로 직접 멋있게 개발한 블로그에 코드를 기록하거나 제가 작업했던 내용을 톺아보기 위해 제작하면 좋겠다는 생각을 했습니다!
+퍼블리셔로 열심히 일하던 시절 [네이버 블로그](https://blog.naver.com/byk5913)에 학습내용을 기록하면서 편하게 이용했지만, 마크다운 문법도 익혀보고 새로운 마음으로 직접 멋있게 개발한 블로그에 코드를 기록하거나 제가 작업했던 내용을 톺아보기 위해 제작하면 좋겠다는 생각을 했습니다! 필요한 기능으로는 게시글 목록 페이지와 게시글 상세 페이지를 구현을 해보겠습니다.
+
+---
 
 ## 기술스택
 
-**1) 프레임워크:** Next.js
+**1) 프레임워크:** [Next.js](https://nextjs.org/)
 
 현업에서도 실제 프로젝트에 사용해보기 위해, 사용법도 익힐겸 Next.js 프레임 워크를 선택했습니다. 
 
-**2) 스타일:** css module + SCSS
+**2) 스타일:** [css module](https://nextjs.org/docs/app/building-your-application/styling/css) + [sass](https://sass-lang.com/)
 
-처음부터 직접 한땀한땀 스타일을 다루는데에 익숙하고 현업에서 활용하는게 익숙해서 선택한 css module + scss 입니다. 이름 그대로 모듈 방식으로 작성하여 클래스 이름이 고유하게 컴파일 되어 동일한 클래스명 이더라도 충돌을 방지할 수 있는 장점이 마음에 들었습니다. 
+처음부터 직접 한땀한땀 스타일을 다루는데에 익숙하고 현업에서 활용하는게 익숙해서 선택한 css module + sass 입니다. 이름 그대로 모듈 방식으로 작성하여 클래스 이름이 고유하게 컴파일 되어 동일한 클래스명 이더라도 충돌을 방지할 수 있는 장점이 마음에 들었습니다. 
 
-**3) 글쓰기:** MDX  
+**3) 글쓰기:** [MDX](https://mdxjs.com/)  
 
 README 파일이나 코드 설명등을 작성할 때 필요한 마크다운 문법에 익숙해지기 위해 선택했습니다. 마크다운 문법으로 생성된 요소를 제가 자유롭게 원하는 모양으로 커스텀 할 수 있다는 게 매력적이었습니다!
 
-**4) 글파싱:** gray-matter + next-mdx-remote
+**4) 글파싱:** [gray-matter](https://github.com/jonschlinkert/gray-matter) + [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote#react-server-components-rsc--nextjs-app-directory-support)
 
 - gray-matter: 마크다운 파일로 블로그를 생성할때 mdx 파일 상단에 있는, 프론트매터(front matter, 메타데이터 블록) 에 접근하기 위해 사용하였습니다.
 - next-mdx-remote: sss
 
-**5) 배포:** Vercel
+**5) 배포:** [Vercel](https://vercel.com/)
 
+작업한 코드를 자동으로 빌드 & 배포하기 위해 사용하였습니다. 별도의 설정 없이 GitHub과 연동하여 코드를 푸시하면 자동으로 빌드 & 배포가 되고 애플리케이션 개발에만 집중할 수 있어 사용하게 되었습니다.
 
+---
 
- `/src/posts/view/blog.mdx`
+## 개발환경
 
+**1) Next.js**
+> Node.js 18.18 이상의 버전이 필요합니다! [(Installation 참고)](https://nextjs.org/docs/getting-started/installation)
 
-## 과정
-
-Calendar
-
-```shell
-npx shadcn-ui@latest init
+```shell title="next install"
+npx create-next-app@latest
 ```
+
+```terminal {2, 4, 6} title="next install options"
+What is your project named? my-app
+Would you like to use TypeScript? Yes
+Would you like to use ESLint? Yes
+Would you like to use Tailwind CSS? No
+Would you like to use `src/` directory? Yes
+Would you like to use App Router? (recommended) Yes
+Would you like to customize the default import alias (@/*)? Yes
+What import alias would you like configured? @/*
+```
+
+css module + sass 를 사용하기때문에, Tailwind 는 선택하지 않았습니다.
+
+**2) SCSS**
+
+```shell title="sass install"
+npm install sass -D
+```
+
+scss 파일로 사용하기 위해 sass를 설치합니다. css module과 사용법도 동일하고, 불러오는 파일 확장자명만 scss로 변경하면 준비가 완료됩니다!
+
+**3) 디렉토리 구조**
+
+```css title="Directory"
+📦public
+ ┣ 📂posts /* 게시글 내부에 사용할 이미지 저장 */
+📦src
+ ┣ 📂app
+ ┃ ┣📂blog
+ ┃ ┃ ┗📂list
+ ┃ ┃ ┗📂view/[slug]
+ ┃ ┃📜favicon.ico
+ ┃ ┃📜layout.tsx
+ ┃ ┃📜page.tsx
+ ┣ 📂components
+ ┣ 📂posts /* 게시글 mdx 파일 저장 */ 
+ ┣ 📂lib
+ ┗ 📂styles
+```
+
+## 개발
+
+**1) 게시글 저장**
+
+**2) 게시글 파싱**
+
+
+**3) 게시글 목록 페이지**
+
+
+**4) 상세 페이지**
+
+
 
 - bucket name
 - AWS region
@@ -55,6 +111,7 @@ npx shadcn-ui@latest init
 import fs from 'fs';
 import matter from 'gray-matter';
 
+ `/src/posts/view/blog.mdx`
 
 
 // 주석처리
@@ -68,30 +125,10 @@ const parsePost = async (postPath: string) => {
 
 
 
-```terminal {1}
-Would you like to use TypeScript (recommended)? yes
-Which style would you like to use? › Default
-Which color would you like to use as base color? › Slate
-Where is your global CSS file? › › app/globals.css
-Do you want to use CSS variables for colors? › yes
-Are you using a custom tailwind prefix eg. tw-? (Leave blank if not) ...
-Where is your tailwind.config.js located? › tailwind.config.js
-Configure the import alias for components: › @/components
-Configure the import alias for utils: › @/lib/utils
-Are you using React Server Components? › yes
-```
+
 ## 개발 환경4
 
-```bash
-📦app
- ┣ 📂folder
- ┃ ┗ 📂sample
- ┃ ┃ ┗ 📜route.ts
- ┣ 📜favicon.ico
- ┣ 📜globals.css
- ┣ 📜layout.tsx
- ┗ 📜page.tsx
-```
+
 
 ```tsx title="layout.tsx"
 export default function RootLayout({

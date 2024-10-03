@@ -16,6 +16,7 @@
   .button {
     @include buttonShadowStyle;
     background-color:$light-bg;
+    color:inherit;
 
   }
   .button_dark {

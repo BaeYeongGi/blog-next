@@ -30,7 +30,7 @@
     }
     p {
       line-height:1.4;
-      margin:1rem 0;
+      margin:1rem 0 2rem 0;
       code {
         display:inline-block;
         color:#eb5757;
@@ -39,6 +39,9 @@
         padding:1rem;
         border-radius:1rem;
         margin:0 0 1rem 0;
+      }
+      strong {
+        font-size:1.8rem;
       }
     }
     pre {
@@ -91,6 +94,12 @@
       padding:1rem;
       margin:0 0 1rem 0;
       border-radius:1rem;
+      p {
+        margin-bottom:1rem;
+      }
+    }
+    hr {
+      margin-top:2rem;
     }
   }
 
@@ -125,10 +134,10 @@
 
 .link {
   font-family:$PretendarBold;
-  color: #006fd6;
+  color: #00498d;
   border-bottom:1px solid transparent;
   &:hover {
-    border-color:#006fd6;
+    border-color:#00498d;
   }
 }
 
