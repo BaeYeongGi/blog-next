@@ -9,7 +9,7 @@ thumbnail: "/images/posts/blog/thumbnail.png"
 
 ## 개요
 
-퍼블리셔로 열심히 일하던 시절 [네이버 블로그](https://blog.naver.com/byk5913)에 학습내용을 기록하면서 편하게 이용했지만, 마크다운 문법도 익혀보고 새로운 마음으로 직접 멋있게 개발한 블로그에 코드를 기록하거나 제가 작업했던 내용을 톺아보기 위해 제작하면 좋겠다는 생각을 했습니다! 필요한 기능으로는 게시글 목록 페이지와 게시글 상세 페이지를 구현을 해보겠습니다.
+퍼블리셔로 열심히 일하던 시절 [네이버 블로그](https://blog.naver.com/byk5913)에 학습내용을 기록하면서 편하게 이용했지만, 마크다운 문법도 익혀보고 새로운 마음으로 직접 멋있게 개발한 블로그에 코드를 기록하거나 제가 작업했던 내용을 톺아보기 위해 제작하면 좋겠다는 생각을 했습니다! 필요한 기능으로는 게시글 목록 페이지와 게시글 상세 페이지를 구현을 해보겠습니다. 블로그를 작성한 코드는 [여기](https://github.com/BaeYeongGi/blog-next)서 확인하실 수 있습니다😊
 
 ---
 
@@ -155,6 +155,73 @@ export default async function View({ params }: {params: {slug: string} }){
 위와 같이 파싱 정보 객체 하나를 가공하면 글 상세 페이지를 보여줄 수 있고, 게시글 파일을 여러개 생성 후, 파싱 정보 리스트를 보여주면 글 목록 페이지를 만들 수 있습니다!
 
 **3) 게시글 목록 페이지**
+
+`src/posts` 에 저장된 `.mdx` 파일을 전부 탐색합니다. 각 파일명을 기반으로 제목을 노출해서 목록을 가져옵니다.
+
+저장한 모든 파일의 게시글 목록을 조회하는 함수는 아래와 같이 작성합니다. 모든 mdx 파일의 경로를 불러오고, 각 파일들의 제목과 front matter 정보를 가져옵니다.
+
+
+```ts title="src/lib/post.ts"
+import path from 'path';
+import fs from 'fs';
+import matter from 'gray-matter';
+
+// 모든 mdx 파일 조회
+export function getPostList() {
+  const filenames = fs.readdirSync(POSTS_DIR);
+  return filenames.filter(filename => filename.endsWith('.mdx')).map((filename) => {
+    const slug = filename.replace(/\.mdx$/, "");
+    const filePath = path.join(POSTS_DIR, `${slug}.mdx`);
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    const { data } = matter(fileContents);
+    return {
+      slug, // .mdx 파일의 파일명
+      data  // .mdx 파일의 front matter 
+    }
+  })
+};
+```
+
+`post.ts` 작성한 함수를 통해 list를 render 해주면 완성됩니다!
+
+```tsx  {2, 8} title="src/app/blog/list/page.tsx"
+import Link from 'next/link';
+import { getPostList } from '@/src/lib/post';
+import styles from '@/src/styles/List.module.scss';
+import Image from 'next/image';
+import { Calendar } from '@/public/images/svg/Calendar';
+
+export default async function List(){
+  const generateList = await getPostList();
+  // 최신 날짜 순으로 포스트 정렬
+  const setDateGenerateList = generateList.sort((a, b) => +new Date(b.data.date) - +new Date(a.data.date));
+
+  return (
+    <div>
+      <ul className={styles.list_wrap}>
+      {
+        setDateGenerateList.map((item) => {
+          return (
+            <li key={item.slug} >
+              <Link href={`/blog/view/${item.slug}`} key={item.slug}>
+                <div className={styles.img_wrap}>
+                  <Image src={item.data.thumbnail} alt=""  fill={true}/>
+                </div>
+                <div className={styles.date}><Calendar/> {item.data.date}</div>
+                <h2 className={styles.title}>{item.data.title}</h2>
+              </Link>
+            </li>  
+          )
+        })
+      }
+        </ul>
+    </div>
+  )
+}
+```
+아래는 완성된 post list 페이지 입니다.
+
+![](/images/posts/blog/list.png)
 
 
 **4) 상세 페이지**
