@@ -1,5 +1,6 @@
 import path from 'path';
 import fs from 'fs';
+import { promises as fsPromises } from 'fs';
 import matter from 'gray-matter';
 
 const POSTS_DIR = path.join(process.cwd(), 'src', 'posts');
@@ -18,6 +19,18 @@ export function getPostList() {
     }
   })
 };
+
+export async function getPostDetail(slug:string){
+  const filePath = path.join(POSTS_DIR, `${slug}.mdx`);
+  const fileContents = await fsPromises.readFile(filePath, "utf8");
+  const { data, content } = matter(fileContents);
+  const haedingList = getHeadingId(content);
+  return {
+    data,
+    content,
+    haedingList
+  }
+}
 
 export function getSitemapPostList(){
   const postList = getPostList();

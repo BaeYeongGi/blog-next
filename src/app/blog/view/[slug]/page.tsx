@@ -7,7 +7,7 @@ import { Calendar } from '@/public/images/svg/Calendar';
 import rehypePrettyCode from 'rehype-pretty-code';
 import ExternalLink from '@/src/components/mdx/Link';
 import rehypeSlug from 'rehype-slug';
-import { getHeadingId } from '@/src/lib/post';
+import { getHeadingId, getPostDetail } from '@/src/lib/post';
 import TitleNavigation from '@/src/components/mdx/TitleNavigation';
 
 interface BlogPostProps {
@@ -37,10 +37,8 @@ export async function generateMetadata({params}: {params: {slug: string}}){
 
 export default async function View({ params }: {params: {slug: string} }){
   const { slug } = params;
-  const filePath = path.join(POSTS_DIR, `${slug}.mdx`);
-  const fileContents = await fsPromises.readFile(filePath, "utf8");
-  const { data, content } = matter(fileContents);
-  const haedingList = getHeadingId(content);
+  const { data, content, haedingList } = await getPostDetail(slug);
+
   return (
     <>
       <h1 className={styles.title}>{data.title}</h1>

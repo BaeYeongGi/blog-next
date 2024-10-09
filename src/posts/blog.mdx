@@ -30,7 +30,7 @@ README 파일이나 코드 설명등을 작성할 때 필요한 마크다운 문
 **4) 글파싱:** [gray-matter](https://github.com/jonschlinkert/gray-matter) + [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote#react-server-components-rsc--nextjs-app-directory-support)
 
 - gray-matter: 마크다운 파일로 블로그를 생성할때 mdx 파일 상단에 있는, 프론트매터(front matter, 메타데이터 블록) 에 접근하기 위해 사용하였습니다.
-- next-mdx-remote: sss
+- next-mdx-remote: 추후에 mdx 파일 내에 직접 react 컴포넌트를 임포트하고 사용하기위해, 커스텀 구성을 하기 위해 사용합니다. 
 
 **5) 배포:** [Vercel](https://vercel.com/)
 
@@ -226,7 +226,89 @@ export default async function List(){
 
 **4) 상세 페이지**
 
+게시글 파일을 파싱하여 데이터를 화면에 보여주면 됩니다.
 
+```tsx title="src/lib/post.ts" 
+export async function getPostDetail(slug:string){
+  const filePath = path.join(POSTS_DIR, `${slug}.mdx`);
+  const fileContents = await fsPromises.readFile(filePath, "utf8");
+  const { data, content } = matter(fileContents);
+  const haedingList = getHeadingId(content);
+  return {
+    data,
+    content,
+    haedingList
+  }
+}
+```
+
+마찬가지로 `post.ts` 에서 작성한 상세 페이지 함수를 통해 render 해주면 됩니다.
+
+여기선 mdx 본문을 파싱하기위해 [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote#react-server-components-rsc--nextjs-app-directory-support)를 사용합니다.
+
+
+```shell title="install next-mdx-remote"
+npm install next-mdx-remote
+```
+
+파싱했던, `content`를 props로 MDXRemote에 전달하면 HTML 요소로 변환하게 됩니다. 
+
+```tsx title="MDXRemote"
+export default async function View({ params }: {params: {slug: string} }){
+  const { slug } = params;
+  const { content } = await getPostDetail(slug);
+
+  return (
+    <MDXRemote
+      source={content}
+    />
+  )
+}
+```
+
+추가적으로 파싱된 mdx 요소를 꾸며주기 위해 plugin, custom component도 전달해줍니다.
+
+```tsx { 1,2,3,4,24,31,35 } title="src/app/blog/view/[slug]/page.tsx"
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote/rsc";
+import rehypePrettyCode from 'rehype-pretty-code';
+import ExternalLink from '@/src/components/mdx/Link';
+import rehypeSlug from 'rehype-slug';
+import { getPostDetail } from '@/src/lib/post';
+import TitleNavigation from '@/src/components/mdx/TitleNavigation';
+
+const MdxComponents = {
+  a: ExternalLink as any
+}
+
+export default async function View({ params }: {params: {slug: string} }){
+  const { slug } = params;
+  const { data, content, haedingList } = await getPostDetail(slug);
+  return (
+    <>
+      <MDXRemote
+        source={content}
+        options={{
+          mdxOptions: {
+            rehypePlugins: [
+              [
+                // code 블럭을 꾸며줌
+                rehypePrettyCode,
+                {
+                  theme: 'slack-dark',
+                  keepBackground: true,
+                }
+              ],
+              // Heading 태그에 ID 부여
+              rehypeSlug,
+            ]
+          }
+        }}
+        components={MdxComponents}
+      />
+    </>
+  )
+}
+```
 
 - bucket name
 - AWS region
