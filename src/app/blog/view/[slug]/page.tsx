@@ -7,7 +7,7 @@ import { Calendar } from '@/public/images/svg/Calendar';
 import rehypePrettyCode from 'rehype-pretty-code';
 import ExternalLink from '@/src/components/mdx/Link';
 import rehypeSlug from 'rehype-slug';
-import { getHeadingId, getPostDetail } from '@/src/lib/post';
+import { getPostDetail } from '@/src/lib/post';
 import TitleNavigation from '@/src/components/mdx/TitleNavigation';
 
 interface BlogPostProps {
