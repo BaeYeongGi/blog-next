@@ -9,6 +9,7 @@ import ExternalLink from '@/src/components/mdx/Link';
 import rehypeSlug from 'rehype-slug';
 import { getPostDetail } from '@/src/lib/post';
 import TitleNavigation from '@/src/components/mdx/TitleNavigation';
+import remarkGfm from 'remark-gfm';
 
 interface BlogPostProps {
   source: MDXRemoteSerializeResult;
@@ -50,6 +51,7 @@ export default async function View({ params }: {params: {slug: string} }){
           source={content}
           options={{
             mdxOptions: {
+              remarkPlugins: [remarkGfm],
               rehypePlugins: [
                 [
                   // code 블럭을 꾸며줌

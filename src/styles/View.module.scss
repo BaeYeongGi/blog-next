@@ -103,6 +103,13 @@
     hr {
       margin-top:2rem;
     }
+    table {
+      margin-bottom:2rem;
+      th, td {
+        border:1px solid var(--border);
+        padding:0.8rem;
+      }
+    }
   }
 
 }
