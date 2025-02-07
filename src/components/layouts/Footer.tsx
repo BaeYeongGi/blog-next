@@ -6,9 +6,13 @@ import { useTheme } from "next-themes"
 
 const Footer = () => {
   const { theme } = useTheme();
+  
+  const date = new Date();
+  const year = date.getFullYear();
+
   return (
     <footer className={theme === 'dark' ? `${styles.footer} ${styles.dark}`: styles.footer}>
-      © 2024. <span>Yeonggi Bae</span> all rights reserved.
+      © {year}. <span>Yeonggi Bae</span> all rights reserved.
     </footer>
   );
 };
