@@ -14,12 +14,15 @@ export default async function List(){
     <div>
       <ul className={styles.list_wrap}>
       {
-        setDateGenerateList.map((item) => {
+        setDateGenerateList.map((item) => {      
           return (
             <li key={item.slug} >
               <Link href={`/blog/view/${item.slug}`} key={item.slug}>
                 <div className={styles.img_wrap}>
-                  <Image src={item.data.thumbnail} alt=""  fill={true}/>
+                  {
+                    item.data.thumbnail === '' ? '썸네일 없음 ' :
+                    <Image src={item.data.thumbnail} alt=""  fill={true}/>
+                  }
                 </div>
                 <div className={styles.date}><Calendar/> {item.data.date}</div>
                 <h2 className={styles.title}>{item.data.title}</h2>
