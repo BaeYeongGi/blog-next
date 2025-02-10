@@ -19,10 +19,7 @@ export default async function List(){
             <li key={item.slug} >
               <Link href={`/blog/view/${item.slug}`} key={item.slug}>
                 <div className={styles.img_wrap}>
-                  {
-                    item.data.thumbnail === '' ? '썸네일 없음 ' :
-                    <Image src={item.data.thumbnail} alt=""  fill={true}/>
-                  }
+                  <Image src={item.data.thumbnail} alt=""  fill={true}/>
                 </div>
                 <div className={styles.date}><Calendar/> {item.data.date}</div>
                 <h2 className={styles.title}>{item.data.title}</h2>
