@@ -235,3 +235,39 @@ int main(){
 ```
 
 ---
+
+## 16_반복문_while문
+
+```c title="다음 C 프로그램의 실행 결과는?"
+int i = 0;
+while(i < 3){
+  printf("i = : %d\n", i);
+  i++;
+}
+printf("sum = : %d\n", i);
+
+// 0 < 3 → i++ / i = 1
+// 1 < 3 → i++ / i = 2
+// 2 < 3 → i++ / i = 3
+// 3 < 3 X 
+// 답: i = 3
+```
+```c title="다음 C 프로그램의 실행 결과는?"
+#include<stdio.h>
+int main(){
+  int count = 2;
+  int sum = 0;
+  while(count <= 10){
+    sum += count;
+    count += 2;
+  }
+  printf("%d", sum);
+}
+// count 2 <= 10 /sum = 0 + 2 / count = 2 + 2
+// count 4 <= 10 /sum = 2 + 4 / count = 4 + 2
+// count 6 <= 10 /sum = 6 + 6 / count = 6 + 2
+// count 8 <= 10 /sum = 12 + 8 / count = 8 + 2
+// count 10 <= 10 /sum = 20 + 10 / count = 10 + 2
+// count 12 <= 10 X
+// 답: sum = 30
+```
