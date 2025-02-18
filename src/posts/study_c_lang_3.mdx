@@ -1,0 +1,59 @@
+---
+title: "흥달쌤의 깨알 C언어 특강 21 ~ 30"
+date: "2025-02-18"
+summary: "내가 보려고 만든 강의 요약"
+thumbnail: "/images/posts/no_image/thumbnail.png"
+---
+
+![](/images/posts/no_image/thumbnail.png)
+
+## 21_배열1
+
+* ※ 배열이란?: 같은 자료형의 변수를 연속적으로 묶어 놓은 저장공간
+
+```c title="배열의 선언"
+int a [5];
+
+// int → 자료형 
+// a → 배열명 
+// [5] → 개수 
+
+a[0] = 10;
+a[2] = 20;
+a[6] = 60; // 오류
+
+```
+|a[0]|a[1]|a[2]|a[3]|a[4]|
+|----|----|----|----|----|
+|__10__|&nbsp;|__20__|&nbsp;|&nbsp;|
+
+* ※ 이차원 배열: 같은 자료형의 변수를 행과 열의 연속적인 공간으로 묶어 놓은 것
+
+int a [2][3]; ← 2행 3열인 배열
+
+|a[0][0]|a[0][1]|a[0][2]|
+|----|----|----|
+|__a[1][0]__|__a[1][1]__|__a[1][2]__|
+
+```c title="다음 C프로그램의 출력 결과는?"
+void main(){
+  char msg[50] = "Hello World! God Luck!";
+  int i = 2, number = 0;
+  while(msg[i] != '!'){
+    if(msg[i] == 'a' || msg[i] == 'e' || msg[i] == 'i' || msg[i] == 'o' || msg[i] == 'u')
+      number++;
+    i++;
+  }
+  printf("%d", number);
+  return 0;
+}
+// 공백까지 배열에 포함 'H','e','l','l','o',' ','W','o' ...
+// while 문에서 msg[i] 가 '!' 문자열이 나오면 실행 종료 
+// msg[i] 중 'a' / 'e' / 'i' / 'o' / 'u' 가 있으면 number++ 없으면 i++ 실행
+
+// 예) msg[2]는 he'l'lo 에 해당됨 'l' 은 조건문에 해당되는 문자열이 없으므로 i++ → int i = 3 ;
+// 예) msg[4]는 hell'o' 에 해당됨 'o' 는 조건문에 해당되는 문자열이 있으므로 number++ → number = 1;
+// hello world! → hell'o' w'o'rld! 2개 해당되어 number = 2;
+// msg 11번째 인덱스에 '!' 가 있기 때문에 while 구문 종료 / i = 11;
+// 답: number = 2;
+```
