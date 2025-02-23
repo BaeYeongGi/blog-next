@@ -57,3 +57,78 @@ void main(){
 // msg 11번째 인덱스에 '!' 가 있기 때문에 while 구문 종료 / i = 11;
 // 답: number = 2;
 ```
+
+---
+
+## 22_배열2
+
+```c title="다음 C프로그램을 실행한 결과로 옳은 것은?"
+void main(){
+  int i;
+  char ch;
+  char str[7] = "nation";
+  for(i = 0; i < 4; i++){
+    ch = str[5-i];
+    str[5-i] = str[i];
+    str[i] = ch;
+  }
+  printf("%s\n", str); // &s 문자열 출력
+}
+// swap 알고리즘 
+// i = 0 / ch = str[5-0] "n"; / str[5-0] = str[0] "n" = "n" / str[i] = "n"
+// "nation"
+// i = 1 / ch = str[5-1] "o"; / str[5-1] = str[1] "o" = "a" / str[i] = "o" 
+// "notian" 
+// i = 2 / ch = str[5-2] "i"; / str[5-2] = str[2] "i" = "t" / str[i] = "i"
+// "noitan"
+// i = 3 / ch = str[5-3] "i"; / str[5-3] = str[3] "i" = "t" / str[i] = "i"
+// "notian"
+// 답: "notian"
+```
+
+---
+
+## 23_포인터
+
+* ※ 포인터란?: 메모리의 위치를 표현한 기호
+
+```c title="지역변수 예제"
+int *a;
+*a = 10;
+printf("%d", a); // 102
+printf("%d", *a); // 10
+
+// 102번지의 값에다가 10을 대입함
+// []100, []101, [10]102, []103, []104
+```
+```c title="변수의 주소 찾기"
+int b = 10;
+int *a;
+a = &b;
+printf("%d\n", *a); 
+printf("%d\n", b); 
+
+// []100, []101, []102, b[10]103, []104
+// a = b의 주소값
+// b의 주소값은 103 → a = 103
+// 103번지의 값은 10
+// 답: *a = 10, b = 10
+```
+```c title="다음 C프로그램의 출력 값은?"
+#include<stdio.h>
+void main(){
+  int A = 10, B;
+  int *C = &B;
+
+  B = A--;
+  B += 20;
+  printf("%d", *C);
+}
+
+// *C 는 B의 주소값
+// B에 10을 넣은 후 A-- 
+// B = 10, A = 9
+// B = B + 20; → B = 30
+// A[10]100, B[30]101, []102, []103
+// 답: 30  
+```
