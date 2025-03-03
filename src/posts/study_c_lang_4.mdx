@@ -1,0 +1,49 @@
+---
+title: "흥달쌤의 깨알 C언어 특강 31 ~ 40"
+date: "2025-03-02"
+summary: "내가 보려고 만든 강의 요약"
+thumbnail: "/images/posts/no_image/thumbnail.png"
+---
+
+![](/images/posts/no_image/thumbnail.png)
+
+## 31_포인터 배열_1
+
+※ 배열의 요소가 포인터(메모리주소)로 이루어진 것
+
+```c title="다음 C 프로그램의 실행 결과는?"
+#include<stdio.h>
+int main(){
+  static char *c[] = {"aaa", "bbb", "ccc"};
+  printf("%s", *(c+1));
+}
+// c 100 주소값이 들어가는 배열 
+// 100번지 [20번지], 101번지 [30번지], 102번지 [40번지]
+// 20번지 a a a
+// 30번지 b b b
+// 40번지 c c c
+
+// *(c+1) → 101번지의 값 → 30번지의 값
+// 답: bbb 
+
+```
+
+## 32_포인터 배열_2
+
+```c title="다음 C 프로그램의 실행 결과는?"
+#include<stdio.h>
+int main(){
+  char *array1[2] = {"Good morning", "C language"};
+  prinft("%s\n", array1[0]+5);
+  printf("%c\n", *(array1[1]+6));
+}
+
+// array1 2개의 배열 공간 100 array1[0][20번지], array1[1][50번지]
+// 20번지 G o o d _ m o r n i n g 
+// 50번지 C _ l a n g u a g e
+// 20번지 + 5번지에 해당하는 값 'm' o r n i n g
+// 's' 문자열 출력 null문자가 나올때까지 → morning
+// 50번지 + 6번지에 해당하는 값 'u' 
+// 'c' 문자 1개 출력 → u
+// 답: morning, u
+```
