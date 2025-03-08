@@ -99,3 +99,106 @@ int main(){
 // *arr[1] → 24 + 12 + 1 
 // 답: 37
 ```
+
+---
+
+## 35_구조체_포인터 이동
+
+* ※ 구조체란?: 여러 변수들을 모아서, 하나의 객체를 구성할 때 사용하는 사용자 정의 타입 객체
+
+```c title="구조체 정의 및 사용1"
+struct person
+{
+  char *name;
+  int age;
+};
+struct person user1; // person 이라는 구조체에 user1 이라는 이름을 선언
+user1.name = "h user";
+printf("%s", user1.name);
+```
+```c title="구조체 정의 및 사용2"
+struct person
+{
+  char *name;
+  int age;
+} test;
+test.name = "h user";
+test.age = 40;
+printf("%s:%d, test.name, test.age);
+```
+```c title="구조체 정의 및 사용3 (포인터변수)"
+struct person
+{
+  char *name;
+  int age;
+};
+struct person *p;
+p -> name = "test_2";
+p -> age = 40;
+printf("%s:%d, p->name, p->age);
+```
+```c title="다음 C프로그램의 실행 결과로 옳은 것은?"
+#include<stdio.h>
+int main(){
+  struct list{
+    int *fp;
+  } data, *p;
+  int x[] = {100, 200, 300, 400};
+  p = &data;
+  p -> fp = x + 1;
+  printf("%d", *(++p->fp));
+  return 0;
+}
+// data 에 fp []
+// *p 에 fp []
+// x 200번지 100, 200, 300, 400
+
+// p = &data; data가 100번지 주소를 가질때 *p 도 100번지 주소를 가지게 됨 
+// *p 는 data의 fp [] 를 가리킴
+// p -> fp = x + 1 → 200번지 + 1 → 201번지를 가리킴
+// *(++p->fp) → 202번지의 값
+
+// 답: 300
+```
+
+---
+
+## 36_배열포인터
+
+* ※ 배열포인터?: 배열의 시작 주소값을 저장할 수 있는 포인터 2차원 배열의 구조. 그냥 하나의 포인터일 뿐
+
+```c title="다음 C프로그램의 실행 결과로 옳은 것은?"
+#include<stdio.h>
+#include<stdlib.h>
+#define N 3
+int main(void){
+  int (*in)[N], *out, sum = 0;
+  in = (int (*)[N]) malloc(N*N*sizeof(int))
+  out = (int*)in;
+  for(int i = 0; i < N * N; i++) out[i] = i;
+  for(int i = 0; i < N; i++)
+    sum += in[i][i];
+  printf("%d", sum);
+  return 0;
+}
+
+// #define N 3 매크로: 앞으로 나오는 N은 3
+// in 에 3 * 3 배열을 만듬
+// in[0] 100번지 [] [] []
+// in[1] 103번지 [] [] []
+// in[2] 106번지 [] [] []
+
+// 0 부터 N * N → 0 ~ 8까지 배열에 채워 넣음
+// in[0] 100번지 [0] [1] [2]
+// in[1] 103번지 [3] [4] [5]
+// in[2] 106번지 [6] [7] [8]
+
+// sum += in[i][i] 
+// 반복문으로 0행0열, 1행1열, 2행2열
+
+// sum = sum + in[i][i] 
+// i = 1 / sum = sum 0 + 4
+// i = 2 / sum = sum  4 + 8 
+// i = 3 / 반목문 실행 x
+// 답 sum = 12
+```
