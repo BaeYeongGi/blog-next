@@ -286,3 +286,31 @@ int func(int n){
 // curent 5값을 func(5)로 호출
 // 답: 5
 ```
+
+---
+
+## 39_함수에 주소전달_1
+
+```c title="다음 C 언어 프로그램의 실행 결과는?"
+#include<stdio.h>
+int main(void){
+  int x = 10, y = 20;
+  printf("%d", f(&x, y));
+  printf("%d %d\n", x, y);
+}
+
+int f(int *i, int j){
+  *i += 5;
+  return(2**i+ ++j);
+}
+// f(&x, y) → x의 주소값(100), y의 value
+// int f(int *i, int j) → 100번지, 20 
+// *i += 5 → 100번지를 참조하는 i의 값 → i = 10 + 5 
+// x = 15
+// return (2 * *i + ++j) → ++j먼저 수행 → 21
+// 2 * i의 값 (15) → 30
+// 30 + 21 = 51 을 return 
+// f(&x, y) 는 51 
+// x는 15, y는 20
+// 답: 51, 15, 20
+```
