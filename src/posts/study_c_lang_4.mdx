@@ -314,3 +314,31 @@ int f(int *i, int j){
 // x는 15, y는 20
 // 답: 51, 15, 20
 ```
+
+---
+
+## 40_함수와 변수의 유효범위
+
+```c title="다음 C 언어 프로그램의 실행 결과는?"
+#include<stdio.h>
+int a = 1, b = 2, c = 3;
+int f(void);
+int main(void){
+  printf("%3d\n", f());
+  printf("%3d%3d%3d\n", a, b, c);
+  return 0;
+}
+int f(void){
+  int b, c;
+  a=b=c=4;
+  return (a+b+c);
+}
+
+// %3d\n → 3개의 공간을 확보, f() 함수값값 대입
+// a=b=c=4 → c = 4, b = 4, a는 함수내에 선언된 변수가 없고 전역으로 선언된 변수의 값 → 4
+// (a + b + c) 4 + 4 + 4 = 12값 return
+// printf("%3d\n", f()); → _ 1 2
+// printf("%3d%3d%3d\n", a, b, c) → 4, 2, 3
+// 답: _ 1 2, _ 4, _ 2, _ 3 
+
+```
