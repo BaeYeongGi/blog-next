@@ -1,0 +1,43 @@
+---
+title: "흥달쌤의 깨알 C언어 특강 41 ~ 50"
+date: "2025-03-13"
+summary: "내가 보려고 만든 강의 요약"
+thumbnail: "/images/posts/no_image/thumbnail.png"
+---
+
+![](/images/posts/no_image/thumbnail.png)
+
+## 41_함수에 주소전달_2
+
+```c title="다음 C 언어 프로그램의 실행 결과는?"
+#include<stdio.h>
+void main(){
+  int a = 5;
+  int b = 3;
+  int c = 0;
+  b = foo(a, &c);
+  c = foo(b, &a);
+  printf("a=%d b=%d c=%d", a, b, c);
+}
+int foo(int a, int *b){
+  int c;
+  *b = a + 1;
+  c = a - 1;
+  return c;
+}
+// a = 5, b = 3, c = 0
+// foo(a, &c) → foo(5, c의 주소값 300번지)
+
+// foo 함수 내에 a = 5, c = 300번지
+// 300번지의 값에 *b = a + 1 을 계산 → 6 
+// main 함수 내에 c = 6
+// foo 함수 내에 c = a - 1 → return 4
+// main 함수 내에 b = 4;
+
+// 2번째 foo 함수 (b, &a) → foo(4, a의 주소값 100번지)
+// 100번지의 값에 *b = a + 1 을 계산 → 5
+// main함수 내에 a = 5
+// c = 4 - 1 → c = 3 → return 3
+// main 함수 내에 c = 3;
+// 답: a = 5, b = 4, c = 3
+```
