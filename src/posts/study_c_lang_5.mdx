@@ -84,3 +84,47 @@ void(int a, int *b){
 // for문 4미만 index 배열만큼 list[i] 출력
 // 답: 3, 3, 5, 3
 ```
+
+---
+
+## 43_함수에 주소를 리턴
+
+```c title="다음 C 언어 프로그램의 실행 결과는?"
+#include<stdio.h>
+int main(){
+  int i;
+  int x = 10;
+  int *p;
+  int a[100];
+  for(i = 0; i < 100; i++){
+    a[i] = i * 10;
+  p = func(x, a);
+  printf("sum=%d", x+a[0] + a[1] + p[0] + p[1]);
+  }
+}
+
+int *func(int a, int *x){
+  a = a + 10;
+  x = x + 1;
+  *x = *x * 2;
+  return x;
+}
+
+// int *func → int 형의 func 주소값을 전달
+// for 문 i = 0, 
+// i = 0 / a[0] = 0 * 10 → 0 (100번지)
+// i = 1 / a[1] = 1 * 10 → 10 (101번지)
+// i = 2 / a[2] = 2 * 10 → 20 (102번지)
+// ... i = 4 / a[4] = 4 * 10 → 40 (104번지)
+
+// p = func(x, a);
+// *func 함수 / int a = 10, int *x = 100번지참조
+// *func 함수 / a = a + 10 → a = 10 + 10 → a = 20
+// *func 함수 / x = x + 1; → 101번지
+// *func 함수 / *x = *x * 2; → 101번지의 값(10) * 2 → 20
+// *main 함수 / 101번지의 값은 10 → 20
+// *func 함수 / return x; → 101번지 주소값을 p에 return → p = 101번지
+// *main 함수 / x + a[0] + a[1] + p[0] + p[1]
+// *main 함수 / 10 + 0 + 20 + 20 + 20 
+// 답: "sum=70"
+```
