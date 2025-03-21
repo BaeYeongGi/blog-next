@@ -128,3 +128,66 @@ int *func(int a, int *x){
 // *main 함수 / 10 + 0 + 20 + 20 + 20 
 // 답: "sum=70"
 ```
+
+---
+
+## 44_함수에 주소전달_4
+
+```c title="다음 C 언어 프로그램의 실행 결과는?"
+#include<stdio.h>
+void main(void){
+  int a = 10, b = 20, c = 30, d = 40;
+  change(&a, &b, c, d);
+  printf("a=%d, b=%d, c=%d, d=%d, a, b, c, d");
+}
+
+void change(int *px, int *py, int pc, int pd){
+  *px = *py + pd;
+  *py = pc + pd;
+  pc = *px + pd;
+  pd = *px + *py;
+}
+
+// main함수 / a = 10, b = 20, c = 30, d = 40
+// change함수 / *px = (&a)100번지, *py = (&b)200번지, pc = 30, pd = 40
+// change함수 / *px = *py + pd → (&a)100번지 = 20 + 40 
+// main 함수 / 100번지 값(a) 20 + 40 → a = 60 
+// change함수 / *py = pc + pd → (&b)200번지 = 30 + 40
+// main 함수 / 200번지 값(b) 30 + 40 → b = 70 
+// change함수 / pc = *px + pd; → pc = 60 + 40 → pc = 100
+// change함수 / pd = *px + *py; → pd = 60 + 70 → pd = 130
+// change함수내에 있는 변수들 삭제
+// 답: a = 60, b = 70, c = 30, d = 40
+```
+
+---
+
+## 45_함수에 주소전달_5
+
+```c title="다음 C 언어 프로그램의 실행 결과는?"
+#include<stdio.h>
+int main(){
+  double f[] = {1, 2, 3, 4};
+  printf("%3.1f\n", h(f, 4, 2));
+  return 0;
+}
+
+double h(double *f, int d, double x){
+  int i;
+  double res = 0.0;
+  for(i = d-1; i >= 0; i--){
+    res = res * x + f[i];
+  }
+  return res;
+}
+
+// double 100번지 f[] 1, 2, 3, 4
+// printf("%3.1f\n", h(f, 4, 2)) → _ _ _ . _, h(100번지, 4, 2)
+// f = 100번지, d = 4, x = 2, i = _, res = 0 
+// 4-1 → i = 3 / res = 0 * 2 + 4 = 4; / res = 4;
+// i = 2 / res = 4 * 2 + 3 = 11; / res = 11;
+// i = 1 / res = 11 * 2 + 2 = 24; / res = 24;
+// i = 0 / res = 24 * 2 + 1 = 49; / res = 49;
+// i = -1 실행 X / return res; → return 49;
+// 답: 49.0 
+```
