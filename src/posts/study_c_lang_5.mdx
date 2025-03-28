@@ -260,3 +260,68 @@ void func(int *m, int *x, int y){
 // func함수 → main함수 / *x = ++n → n값 7, x의 값(200번지) 7 → a의 값 → 7 
 // 답: a=7, b=30
 ```
+
+---
+
+## 48_함수에 주소전달_8
+
+https://youtu.be/iZzdqIrs50c?si=6Eia5dPXVM81PmDt
+
+이건 좀 너무한 문제다 🥲
+
+---
+
+## 49_static 변수_1
+
+  * a) 단 한번만 초기화 하고, 그 이후에는 전역변수처럼 프로그램이 종료될때까지 메모리공간에 존재하는 변수
+  * b) 초기값이 지정이 안되면, 자동으로 0이 대입.
+
+```c title="지역 변수 사용"
+void test(){
+  int a = 10;
+  a++;
+  printf("%d", a);
+}
+void main(){
+  test(); // 11
+  test(); // 11
+}
+```
+
+```c title="static 변수 사용"
+void test(){
+  static a = 10;
+  a++;
+  printf("%d", a);
+}
+void main(){
+  test(); // a = 11 값은 메모리 상에 남아 있음
+  test(); // 메모리 상에 있는 11값이 존재하므로, int a = 10은 무시 → a = 12
+}
+```
+
+```c title="다음 C프로그램의 출력 값은?"
+#include <stdio.h>
+void funCount();
+int main(void){
+  int num;
+  for(num = 0; num < 2; num++)
+    funCount();
+  return 0;
+}
+void funCount(){
+  int num = 0;
+  static int count;
+  printf("num=%d, count=%d\n", ++num, count++);
+}
+
+// num = 0 > 2 / funCount() 실행 
+// funCount함수 / num = 0, static count = 0;
+// printf → num = 1, count = 0 (다음 1) → 함수종료
+// num = 1 > 2 / funcCount() 실행
+// funCount함수 / num = 0, static count = 1;
+// printf → num = 1, count = 1 (다음 2) → 함수종료
+// num = 2 > 2 / 거짓, 실행 X
+
+// 답: num = 1 count = 0 num = 1 count = 2
+```
