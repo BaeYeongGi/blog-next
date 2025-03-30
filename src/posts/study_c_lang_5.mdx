@@ -1,7 +1,7 @@
 ---
 title: "흥달쌤의 깨알 C언어 특강 41 ~ 50"
 date: "2025-03-15"
-summary: "내가 보려고 만든 강의 요약"
+summary: "내가 보려고 만든 강의 요약 & 풀이"
 thumbnail: "/images/posts/no_image/thumbnail.png"
 ---
 
@@ -324,4 +324,45 @@ void funCount(){
 // num = 2 > 2 / 거짓, 실행 X
 
 // 답: num = 1 count = 0 num = 1 count = 2
+```
+
+---
+
+## 50_static 변수_2
+
+```c title="다음 C 프로그램 실행 결과로 출력되는 sum 값으로 옳은 것은?"
+#include<stdio.>
+void main(){
+  int i = 0, sum = 0;
+  while(i < 3){
+    sum = sum + fo();
+    i++;
+  }
+  printf("sum=%d\n", sum);
+}
+int fo(void){
+  int var1 = 1;
+  static int var2 = 1;
+  return (var1++) + (var2++);
+}
+
+// main함수 / i = 0 sum = 0;
+// fo함수 / var 1  = 1, static var2 = 1
+// fo함수 return / 1 + 1 / return 2
+// fo함수/ static var2 = 2
+// main 함수 / sum = sum + fo() / sum = 0 + 2 / sum = 2
+
+// main함수 / i = 1 sum = 2
+// fo함수 / var 1 = 1, static var2 = 2
+// fo함수 return / 1 + 2 / return 3
+// fo함수/ static var2 = 3
+// main 함수 / sum = sum + fo() / sum = 2 + 3 / sum = 5
+
+// main함수 / i = 2 sum = 5
+// fo함수 / var 1 = 1, static var2 = 3
+// fo함수 return / 1 + 3 / return 4
+// fo함수/ static var2 = 4
+// main 함수 / sum = sum + fo() / sum = 5 + 4 / sum = 9
+
+// 답: sum=9
 ```

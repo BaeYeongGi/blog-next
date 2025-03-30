@@ -1,0 +1,75 @@
+---
+title: "흥달쌤의 깨알 C언어 특강 41 ~ 50"
+date: "2025-03-30"
+summary: "내가 보려고 만든 강의 요약 & 풀의"
+thumbnail: "/images/posts/no_image/thumbnail.png"
+---
+
+![](/images/posts/no_image/thumbnail.png)
+
+## 51_static 변수_3
+
+```c title="다음 C 프로그램의 실행 결과는?"
+#include<stdio.h>
+void main(){
+  int s1, s2;
+  s1 = funcA(2);
+  printf("F1 = %d, ", s1);
+  s1 = funcA(3);
+  printf("F2 = %d, ", s1);
+  s2 = funcB(2);
+  printf("F3 = %d, ", s2);
+  s2 = funcB(3);
+  printf("F4 = %d, ", s2);
+}
+int funcA(int n){
+  static int s = 1;
+  s *= n;
+  return s;
+}
+int funcB(int n){
+  int s = 1;
+  s *= n;
+  return s;
+}
+
+// funcA(int 2) 
+// funcA / static int s = 1 / s = s * 2 / static s = 2 / return 2
+// 답: F1 = 2
+// funcA(int 3)
+// funcA / static int s = 2 / s = s * 3 / static s = 6 / return 6
+// 답: F2 = 6
+// funcB(int 2)
+// funcB / s = 1 / s = s * 2 / s = 2 / return 2
+// 답: F3 = 2
+// funcB(int 3)
+// funcB / s = 1 / s = s * 3 / s = 3 / return 3
+// 답: F4 = 3
+```
+
+---
+
+## 52_static 변수_4
+
+```c title="다음 C 프로그램의 출력 값은?"
+int a = 10;
+int b = 20;
+int c = 30;
+void main(){
+  func();
+  func();
+  printf("a=%d, b=%d, c=%d\n", a, b, c);
+}
+void func(void){
+  static int a = 100;
+  int b = 200;
+  a++;
+  b++;
+  c = a;
+}
+// 1 - func() / static int a = 100 / int b = 200; 
+// 1 - func() / a++ → static int a = 101 / b++ → 201 / c = 101;
+// 2 - func() / static int a = 101 / int b = 200; 
+// 2 - func() / a++ → static int a = 102 / b++ → 201 / c = 102;
+// 답: a = 10, b = 20, c = 102
+```
