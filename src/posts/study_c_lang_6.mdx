@@ -1,5 +1,5 @@
 ---
-title: "흥달쌤의 깨알 C언어 특강 41 ~ 50"
+title: "흥달쌤의 깨알 C언어 특강 51 ~ 60"
 date: "2025-03-30"
 summary: "내가 보려고 만든 강의 요약 & 풀의"
 thumbnail: "/images/posts/no_image/thumbnail.png"
@@ -72,4 +72,90 @@ void func(void){
 // 2 - func() / static int a = 101 / int b = 200; 
 // 2 - func() / a++ → static int a = 102 / b++ → 201 / c = 102;
 // 답: a = 10, b = 20, c = 102
+```
+
+---
+
+## 53_재귀함수_1
+
+  * a) 함수 내에서 자기의 함수를 다시 호출하는 함수
+  * b) 스택 내에 차곡차곡 쌓아두었다가 일괄로 처리를 한다
+
+```c title="다음 C언어로 작성된 프로그램의 실행 결과에서 세 번째 줄에 출력되는 것은?"
+#include<stdio.>
+int func(int num){
+  if(num == 1)
+    return 1;
+  else
+    return num * func(num-1);
+}
+
+void main(){
+  int i;
+  for(i = 5; i >= 0; i--)
+  {
+    if(i % 2 == 1)
+      printf("func(%d): %d\n", i, func(i));
+  }
+}
+
+// i = 5 / if(1 % 2 == 1) 실행 o
+// printf("func(%d): %d\n", i, func(i));
+// func 함수 인자값 i(5) 전달
+
+// func함수 / num = 5 / else 실행 
+// 밑에서부터 stack
+// num * func(num-1) 
+
+// 1 / num = 1, return 1
+// 2 * func(1) → num = 1 / 2 * 1 = 2 (2값이 func(2)로 내려감)
+// 3 * func(2) → num = 2 / 3 * 2 = 6 (6값이 func(3)로 내려감)
+// 4 * func(3) → num = 3 / 4 * 6 = 24 (24값이 func(4)로 내려감)
+// 5 * func(4) → num = 4 / 5 * 24 = 120 
+// 120 값을 func(i)에 넣음 / func(i) = 120 / func(5):120
+
+// i = 4 / if(4 % 2 == 1) 실행 x
+// i = 3 / if(3 % 2 == 1) 실행 o
+// func 함수 인자값i(3) 전달
+// func함수 / num = 3 / else 실행
+// num * func(num-1)
+
+// 1 / num = 1, return 1
+// 2 * func(1) → num = 2 (2값이 func(2)로 내려감)
+// 3 * func(2) → num = 3 → 6 
+// func(3):6
+
+// i = 2 / if(2 % 2 == 1) 실행 x
+// i = 1 / if(1 % 2 == 1) 실행 o
+// func 함수 인자값i(1) 전달
+// func함수 / num = 1 / return 1
+// func(1):1
+```
+
+---
+
+## 54_재귀함수_2
+
+```c title="다음 C프로그램의 실행 결과는?"
+#include<stdio.>
+int f(int n){
+  if(n > 0)
+    return n % 10 + f(n / 10);
+  else 
+    return 0;
+}
+void main(){
+  int result;
+  result = f(123);
+  printf("%d\n", result);
+}
+
+// f함수 / int = 123 / n % 10 + f(n / 10) 실행
+// f함수 / 123 % 10 + f(123 / 10) → 3 + f(12)
+// n = 0 / return 0
+// n = 1 / 1 % 10 + f(0) → 1 + 0 = 1 (1은 f1으로 이동)
+// n = 12 / 12 % 10 + f(1) → 2 + 1 = 3 (3은 f12로 이동)
+// n = 123 / 123 % 10 + f(12) → 3 + 3 = 6 / return 6
+
+답: 6
 ```
