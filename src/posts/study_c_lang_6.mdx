@@ -308,3 +308,94 @@ void main(){
 // left recur 함수에는 11, right recur 함수에는 8
 // 3 * 11 + 8 = 41;
 ```
+
+---
+
+## 59_중복 재귀함수_2
+
+```c title="다음 C프로그램의 출력값은?"
+#include<stdio.>
+int sub(int n){
+  if(n == 0) return 0;
+  if(n == 1) return 1;
+  return (sub(n-1) + sub(n-2));
+}
+void main(){
+  int a = 0;
+  a = sub(4);
+  printf("%d", a);
+}
+
+// a = 0;
+// sub(n = 4)
+// sub(n - 1) + sub(n - 2) → sub(3) + sub(2)
+
+// 1_left: sub(3) 
+// sub(2) + sub(1)
+
+// 1_1_left: sub(2)
+// sub(1) + sub(0)
+// 1_1_1_left: sub(1) → return 1;
+// 1_1_1_right: sub(0) → return 0;
+// 1_1_1 : 1+0 = 1
+
+// 1_1_right: sub(1) → return 1;
+// 1_1_left + 1_1_right = 2;
+
+// 2_left: sub(2)
+// sub(1) + sub(0)
+// 2_2_left: sub(1) → return 1;
+// 2_2_right: sub(0) → return 0;
+// 2_2_left + 2_2_right = 1;
+
+// 1_1 + 2_2 = 3;
+
+// 답: 3
+```
+
+---
+
+## 60 _중복 재귀함수_3
+
+``c title="다음 C프로그램에서 main() 함수를 실행할 때 fib()함수가 호출되는 횟수로 옳은 것은?"
+#include<stdio.>
+int fib(int n){
+  if(n == 0) return 0;
+  if(n == 1) return 1;
+  return (fib(n-1)+fib(n-2));
+}
+void main(){
+  fib(5);
+}
+
+// fib(int n = 5)
+// fib(4) + fib(3)
+// 1_left: fib(4) 
+// 1_left: fib(3) + fib(2)
+// 1_1_left: fib(3)
+// 1_1_left: fib(2) + fib(1);
+// 1_1_1_left: fib(2)
+// 1_1_1_left: fib(1) + fib(0)
+// 호출: 1_1_1_left: fib(1) → return 1;
+// 호출: 1_1_1_left(right): fib(0) → return 0;
+// 1_1_1_left + 1_1_1_right = 1;
+
+// 호출: 1_1_right: fib(1) → return = 1;
+
+// 1_right: fib(2)
+// 1_right: fib(1) + fib(0)
+// 호출: 1_right: fib(1) → return 1;
+// 호출: 1_right(right): fib(0) → return 0;
+// 1_right + 1_right(right) = 1;
+
+// 2_right: fib(3)
+// 2_right: fib(2) + fib(1)
+// 호출: 2_right(right): fib(1) → return 1; 
+// 2_2_right: fib(2)
+// 2_2_right: fib(1) + fib(0)
+// 호출: 2_2_right: fib(1) → return 1;
+// 호출: 2_2_right(right): fib(0) → return 0;
+
+// 결과값: 5
+// fib 호출횟수: 15
+```
