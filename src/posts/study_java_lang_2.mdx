@@ -1,0 +1,115 @@
+---
+title: "JAVA 2 오버로딩 오버라이딩 하이딩"
+date: "2025-04-06"
+summary: "내가 보려고 만든 강의 요약 & 풀이"
+thumbnail: "/images/posts/no_image/thumbnail.png"
+---
+
+![](/images/posts/no_image/thumbnail.png)
+
+
+## 1_메서드 오버로딩
+
+__※ 오버로딩 개념__
+* a) 같은 이름의 메서드를 인자만 다르게 하여 중복 정의하는 것을 의미한다
+* b) 메서드 호출 시 전달되는 매개변수의 수, 타입, 순서에 따라 서로 다른 메서드가 호출된다.
+
+```java title="오버로딩 예제"
+class Caculator {
+  int add(int a, int b){
+    return a + b;
+  }
+  int add(int a, int b, int c){
+    return a + b + c;
+  }
+  double add(double a, double b){
+    return a + b;
+  }
+  double add(int a, double b){
+    return a + b;
+  }
+}
+
+public class Main{
+  public static void main(String[] args){
+    Caculator calc = new Calculator();
+    System.out.printIn(calc.add(10,20));
+    System.out.printIn(calc.add(10,20,30));
+    System.out.printIn(calc.add(10.5,20.5));
+    System.out.printIn(calc.add(10,20.5));
+  }
+}
+
+// 실행결과
+// 30
+// 60
+// 31.0
+// 30.5
+```
+
+## 2_메서드 오버라이딩
+
+__※ 오버라이딩 개념__
+* a) 상속 관계에서 부모 클래스에서 정의된 메서드를 자식 클래스에서 다시 재정의하는 것을 의미
+* b) 부모 클래스의 메서드를 그대로 사용하는 대신, 자식 클래스에서 필요에 따라 동작을 변경할 수 있다.
+
+```java title="오버라이딩 예제"
+class Animal{
+  void sound(){
+    System.out.println("Animal");
+  }
+}
+class Dog extends Animal{
+  @Override
+  void sound(){
+    System.out.println("Dog");
+  }
+}
+public class Main{
+  public static void main(String[] args){
+    Animal animal = new Animal();
+    animal.sound();
+    Animal dog = new Dog();
+    dog.sound();
+  }
+}
+
+// 실행결과
+// Animal
+// Dog
+```
+
+## 3_하이딩
+
+__※ 하이딩 개념__
+* a) 상위 클래스의 static 메서드를 하위 클래스에서 같은 이름과 시그니처로 다시 선언하는 것을 의미한다.
+* b) 상속 관계에서 static 메서드는 클래스 소속으로 동작하므로, 런타임 다형성이 적용되지 않는다.
+* c) 하이딩된 메서드는 참조 변수의 타입에 따라 호출된다
+
+```java title="하이딩 예제"
+class Parent{
+  static void display(){
+    System.out.printIn("Parent");
+  }
+}
+class Child extends Parent{
+  static void display(){
+    System.out.println("Child");
+  }
+}
+public class Main{
+  public static void main(String[] args){
+    Parent p = new Parent();
+    Parent c1 = new Child();
+    Child c2 = new Child();
+    p.display();
+    c1.display();
+    c2.display();
+  }
+}
+
+// 실행결과
+// Parent
+// Parent
+// Child
+```

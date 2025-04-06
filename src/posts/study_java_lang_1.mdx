@@ -1,0 +1,303 @@
+---
+title: "JAVA 1 클래스와 객체 생성자"
+date: "2025-04-05"
+summary: "내가 보려고 만든 강의 요약 & 풀이"
+thumbnail: "/images/posts/no_image/thumbnail.png"
+---
+
+![](/images/posts/no_image/thumbnail.png)
+
+## 1_클래스_class
+
+```java title="클래스 정의"
+class Car{
+  //필드
+  String model; 
+  int speed;
+  // 생성자
+  Car(String model){ // model 에 'Sonata'라는 인자값을 받아옴
+    this.model = model;
+    this.speed = 0; // 초기값설정
+  }
+  // 메서드
+  void accelerate(int increment){
+    speed += increment;
+  }
+  void displayInfo(){
+    System.out.printIn("Model: " + model +", Speed: " + speed);
+  }
+}  
+
+// 객체 생성 및 사용
+public class Main{
+  public static void main(String[] args){
+    Car car1 = new Car("Sonata"); // 객체 생성
+    car1.accelerate(50); // 메서드 호출
+    car1.displayInfo();
+  }
+}
+
+// [실행결과] Model: Sonata, Speed: 50
+```
+
+## 2_객체
+
+```java title="객체 생성#1"
+class Person{
+  String name;
+  int age;
+  void greet(){
+    System.out.printIn("Hello, my name is "+name+".");
+  }
+}
+
+public class Main(){
+  public static void main(String[] args){
+    Person person1 = new Person();
+    Person person2 = new Person();
+
+    person1.name = "Alice";
+    person1.age = 25;
+    person2.name = "Bob";
+    person2.age = 30;
+
+    person1.greet();
+    person2.greet();
+  }
+}
+// [실행결과]
+// Hello, my name is Alice.
+// Hello, my name is Bob.
+```
+
+```java title="객체 생성#2"
+  class Car{
+    private String name;
+    private int speed;
+    public void setName(String name){
+      this.name = name;
+    }
+    public void setSpeed(int sp){
+      this.speed = sp;
+    }
+    public void printInfo(){
+      System.out.print("Name:" + name); // 그냥 출력
+      System.out.printIn(",Speed:" + speed); // printIn 맨 뒤에 엔터 포함 출력
+    }
+  }
+
+  class Main{
+    public static void main(String[] args){
+      Car myCar = new Car();
+      Car yourCar = new Car();
+
+      myCar.setName("소나타");
+      myCar.setSpeed(150);
+
+      yourCar.setName("그렌저");
+      yourCar.setSpeed(200);
+
+      myCar.printInfo();
+      yourCar.printInfo();
+    }
+  }
+
+// [실행결과]
+// Name: 소나타, Speed: 150
+// Name: 그렌저, Speed: 200
+```
+
+## 3_생성자
+
+```java title="생성자 예제"
+class Person{
+  String name;
+  int age;
+  Person(){ // 이름이 같아야 생성자가 됨
+    name = "Unknown";
+    age = 0;
+    System.out.printIn("기본 생성자 호출.");
+  }
+}
+
+Person person = new Person();
+System.out.printIn("Name:"+person.name + ", Age:" + person.age);
+
+// [실행결과]
+// 기본 생성자 호출.
+// Name: Unknown, Age: 0
+```
+
+```java title="생성자 오버로딩"
+class Person {
+  String name;
+  int age;
+  // 기본 생성자
+  Person(){
+    name = "Unknown";
+    age = 0;
+  }
+
+  // 매개변수가 있는 생성자
+  Person(String name, int age){
+    this.name = name;
+    this.age = age;
+  }
+}
+
+public class Main{
+  public static void main(String[] args){
+    Person person1 = new Person();
+    Person person2 = new Person("Alice", 25);
+    System.out.printIn("P1:"+person1.name+","+person1.age)
+    System.out.printIn("P2:"+person2.name+","+person2.age)
+  }
+}
+
+// [실행결과]
+// P1 - Unknown, 0
+// P2 - Alice, 25
+```
+
+```java title="생성자에서 다른 생성자 호출"
+class Person{
+  String name;
+  int age;
+  Person(){
+    this("Unknown",0); // 다른 생성자 호출
+  }
+  Person(String name, int age){ // this("Unknown",0) 
+    this.name = name;
+    this.age = age;
+  }
+}
+
+public class Main{
+  public static void main(String[] args){
+    Person person1 = new Person();
+    Person person2 = new Person("Alice", 25);
+    System.out.printIn("P1:"+person1.name+","+person1.age)
+    System.out.printIn("P2:"+person2.name+","+person2.age)
+  }
+}
+
+// [실행결과]
+// P1 - Unknown, 0
+// P2 - Alice, 25
+```
+
+## 4_접근지정자
+
+```java title="접근지정자 예제(같은 패키지에 있을 경우)"
+class Car{
+  public String name;
+  private int speed;
+  protected int person;
+  int max_speed;
+  public void setSpeed(int speed){
+    this.speed = speed;
+  }
+  public int getSpeed(){
+    return this.speed;
+  }
+}
+
+public class Main{
+  public static void main(String[] args){
+    Car myCar = new Car();
+    myCar.name = "쏘나타"; // 가능
+    //myCar.speed = 100; // 오류 (private 직접 접근 오류)
+    myCar.person = 4; // 가능
+    myCar.max_speed = 200; // 가능
+    myCar.setSpeed(100); // 가능
+    System.out.printIn(myCar.getSpeed()) // 가능
+  }
+}
+```
+
+```java title="접근지정자 예제(다른 패키지에 있을 경우)"
+package mypackage;
+public class Parent{
+  public int pubVar = 1;
+  protected int protVar = 2;
+  int defVar = 3; //default
+  private int privVar = 4;
+}
+
+public void display(){
+  System.out.printIn("Public:"+pubVar);
+  System.out.printIn("protected:"+protVar);
+  System.out.printIn("Default:"+defVar);
+  System.out.printIn("Private:"+privVar);
+}
+
+package otherpackage;
+import mypackage.Parent;
+public class Child extends Parent{
+  public void show(){
+    System.out.printIn("Public:"+pubVar); // 가능
+    System.out.printIn("Protected:"+protVar); //가능(상속관계)
+    //System.out.printIn("Default:"+defVar); // 오류
+    //System.out.printIn("Private:"+privVar); //오류
+  }
+}
+```
+```java title="다음 JAVA 프로그램의 출력 결과를 쓰시오"
+class Person{
+  String name;
+  int age;
+
+  public void setName(String name){
+    this.name = name;
+  }
+  public void setAge(int age){
+    this.age = age;
+  }
+  void introduce(){
+    System.out.printIn("이름:"+name+",나이:"+age);
+  }
+}
+public class Main{
+  public static void main(String[] args){
+    Person p1 = new Person();
+    Person p2 = new Person();
+
+    p1.setName("Lee");
+    p1.setAge(45);
+
+    p1.introduce();
+    p2.introduce(); 
+  }
+}
+
+// p2의 경우 인자값이 없음 string = null , int = 0 기본값
+// 이름: Lee, 나이: 45
+// 이름: null, 나이: 0
+```
+
+## 5_상속
+
+__※ extends__
+* a) 자식 클래스가 부모 클래스를 상속받을 때 사용하는 키워드
+* b) 예: class Child extends Parent
+
+__※ super__
+부모 클래스의 멤버(필드, 메서드, 생성자) 참조할 때 사용하는 키워드
+
+```java title="예제"
+class Parent {
+  String name = "Parent";
+  void display(){
+    system.out.printIn("Parent display()");
+  }
+}
+class Child extends Parent{
+  String name = "Child";
+  void show(){
+    System.out.printIn("Name:"+name); // 자식 클래스의 필드
+    System.out.printIn("Name:"+super.name); // 부모 클래스의 필드
+    super.display(); // 부모 클래스의 메서드 호출
+  }
+}
+```
+
