@@ -131,8 +131,11 @@
 
 @media (max-width: 526px) {
   .circle_progress_wrap {
-    left:244px;
-    transform:translateX(0);  
+    left:auto;
+    top:7rem;
+    right:1rem;
+    transform:translateX(0);
+    // opacity:0.6;
   }
 
 }
