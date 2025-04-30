@@ -116,6 +116,11 @@
   }
 }
 
+
+
+
+
+
 @media (max-width: 768px) {
   .header_container {
     .header {
@@ -124,4 +129,10 @@
   }
 }
 
+@media (max-width: 526px) {
+  .circle_progress_wrap {
+    left:244px;
+    transform:translateX(0);  
+  }
 
+}
