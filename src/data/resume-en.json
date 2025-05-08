@@ -30,7 +30,7 @@
         "id": 0,
         "company": "NATE Communications",
         "summary": "Portal Site Nate, Nate News and Pann, Nate-On Messenger Service Provider",
-        "link": "https://skcomms.co.kr",
+        "link": "https://www.natecorp.com/",
         "period": "2021.03 - 2025.04",
         "skills": [
           {
@@ -133,7 +133,20 @@
                 "contents": "CSS3 → SCSS Switching"
               }                                                     
             ]
-          }          
+          },
+          {
+            "title": "SKT collaboration project UI development support",
+            "list": [
+              {
+                "id": 0,
+                "contents": "Responding to the operation of the official website of 'Chatting Plus'"
+              },
+              {
+                "id": 1,
+                "contents": "Responding to user terms and conditions of operation"
+              }                                                     
+            ]
+          }                        
         ]
       },
       {

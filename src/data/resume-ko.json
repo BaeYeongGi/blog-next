@@ -27,9 +27,9 @@
     "workExperience": [
       {
         "id": 0,
-        "company": "네이트 커뮤니케이션즈",
+        "company": "네이트커뮤니케이션즈",
         "summary": "포털 사이트 Nate, 네이트 뉴스와 판, 네이트온 메신저 서비스 제공 기업",
-        "link": "https://skcomms.co.kr",
+        "link": "https://www.natecorp.com/",
         "period": "2021.03 - 2025.04",
         "skills": [
           {
@@ -132,7 +132,20 @@
                 "contents": "CSS3 → SCSS 전환"
               }                                                     
             ]
-          }          
+          },
+          {
+            "title": "SKT 협업 프로젝트 UI개발 지원 ",
+            "list": [
+              {
+                "id": 0,
+                "contents": "채팅플러스 공식홈페이지 운영 대응"
+              },
+              {
+                "id": 1,
+                "contents": "사용자 이용약관 운영 대응"
+              }                                                     
+            ]
+          }                      
         ]
       },
       {
