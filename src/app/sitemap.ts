@@ -2,9 +2,9 @@ import type { MetadataRoute } from 'next';
 import { getSitemapPostList } from "@/src/lib/post";
 import { getSitemapAboutList } from '@/src/lib/about';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const postSitemapList = getSitemapPostList();
-  const aboutSitemapList = getSitemapAboutList();
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const postSitemapList = await getSitemapPostList();
+  const aboutSitemapList = await getSitemapAboutList();
   const baseUrl = 'https://blog-next-sigma-ten.vercel.app';
   return [
     {
@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
     },
     {
-      url:`${baseUrl}/blog/list`,
+      url:`${baseUrl}/blog`,
       lastModified: new Date(),
     },
     ...postSitemapList,

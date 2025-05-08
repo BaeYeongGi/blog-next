@@ -122,15 +122,15 @@ export const getPostDetail = async (category: string, slug: string) => {
   };
 };
 
-// export function getSitemapPostList(){
-//   const postList = getPostList();
-//   const baseUrl = 'https://blog-next-sigma-ten.vercel.app';
-//   const sitemapPostList = postList.map(({ slug }) => ({
-//     lastModified: new Date(),
-//     url: `${baseUrl}/blog/view/${slug}`
-//   }));
-//   return sitemapPostList;
-// }
+export const getSitemapPostList = async () => {
+  const postList = await getPostList();
+  const baseUrl = 'https://blog-next-sigma-ten.vercel.app';
+  const sitemapPostList = postList.map(({ url }) => ({
+    lastModified: new Date(),
+    url: `${baseUrl}${url}`,
+  }));
+  return sitemapPostList;
+};
 
 export function getHeadingId(content: string){
   const regex = /^(##|###) (.*$)/gim;
