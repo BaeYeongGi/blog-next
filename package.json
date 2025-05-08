@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "npm run open-browser && next dev",
+    "open-browser": "start http://localhost:3000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@fec/remark-a11y-emoji": "^4.0.2",
+    "@types/glob": "^8.1.0",
     "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",
     "next": "14.2.6",

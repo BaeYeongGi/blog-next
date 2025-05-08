@@ -11,9 +11,10 @@ import { useMemo, useCallback } from 'react';
 import useStore from '@/src/store/store';
 import { isAndroidWebView } from '@/src/lib/navigator';
 import { Connect } from '@/public/images/svg/Connect';
+import { CategoryButton } from '../post_list/CategoryButton';
 
 interface ButtonDataType {
-  type: string
+  type: string,
 }
 
 const Buttons = ({type}: ButtonDataType) => {

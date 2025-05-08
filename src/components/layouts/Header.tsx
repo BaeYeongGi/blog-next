@@ -64,7 +64,7 @@ const Header = () => {
     <div className={theme === 'dark' ? `${styles.header_container} ${styles.dark}` : styles.header_container}>
       <header className={setHeaderClassName()} ref={headerRef}>
         <nav className={styles.nav}>
-          <Link href="/blog/list" className={path.includes("/blog") ? styles.active : ""}>Blog</Link>
+          <Link href="/blog" className={path.includes("/blog") ? styles.active : ""}>Blog</Link>
           <Link href="/about" className={path.includes("/about") ? styles.active : ""}>About</Link>
           <Link href="/interview" className={path.includes("/interview") ? styles.active : ""}>Interview</Link>
         </nav>
