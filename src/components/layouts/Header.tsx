@@ -66,7 +66,6 @@ const Header = () => {
         <nav className={styles.nav}>
           <Link href="/blog" className={path.includes("/blog") ? styles.active : ""}>Blog</Link>
           <Link href="/about" className={path.includes("/about") ? styles.active : ""}>About</Link>
-          <Link href="/interview" className={path.includes("/interview") ? styles.active : ""}>Interview</Link>
         </nav>
         <div className={styles.buttons_wrap}>
           <Buttons type="header"/>

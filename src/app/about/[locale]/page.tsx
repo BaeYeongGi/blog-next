@@ -54,9 +54,10 @@ const Page = ({ params }: PageProps) => {
     {id: 3,skill: 'Next.js'},
     {id: 4,skill: 'Gulp'},
     {id: 5,skill: 'HTML5'},
-    {id: 6,skill: 'CSS3'},
-    {id: 7,skill: 'CSS in JS'},
-    {id: 8,skill: 'SCSS'},
+    {id: 6,skill: 'Tailwind CSS'},
+    {id: 7,skill: 'CSS3'},
+    {id: 8,skill: 'CSS in JS'},
+    {id: 9,skill: 'SCSS'},
   ]
 
   return (
