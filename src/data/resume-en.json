@@ -234,6 +234,70 @@
       "school": "The Cyber University Of Korea",
       "department": "Department of Design Engineering",
       "period": "2017.11 - 2022.08"
-    }
+    },
+    "selfInterview": {
+      "summary": "I thought it was an essential question for myself and prepared an answer.",
+      "interview": [
+        {
+          "id": 0,
+          "question": "Q. How did your work go at your previous job?",
+          "answer": {
+            "list": [
+              {
+                "id": 0,
+                "contents": "1) Share the plan organized by the service planner to the practitioner."
+              },
+              {
+                "id": 1,
+                "contents": "2) Review whether there are any difficulties or coordination in working on the project and share the work schedule in a meeting or in writing."
+              },
+              {
+                "id": 2,
+                "contents": "3) Projects being carried out will be managed by Jira (ITS) and new requirements or changes will be shared with the practitioner through that Jira."
+              },
+              {
+                "id": 3,
+                "contents": "4) Once the front-end work is completed, an inspection will be conducted to ensure that the work is in line with the proposal and design requirements."
+              },     
+              {
+                "id": 4,
+                "contents": "5) Resolve service issues arising from inspection or QA and testing and complete the project."
+              }                                      
+            ],
+            "text": "I've been familiar with this kind of workflow so far, but I'll try to quickly acquire and adapt information about what work tools companies use and how work flows and services operate."
+          }
+        },
+        {
+          "id": 1,
+          "question": "Q. I'd like to know about the reasons for my retirement.",
+          "answer": {
+            "list": [
+              {
+                "id": 0,
+                "title": "[ Gaons ] Establishing career direction",
+                "contents": "During my tenure for about a year, I became involved in planning work that was not related to the job I wanted. I decided to retire because I aimed to improve my publishing and development capabilities, which I felt was insufficient in the situation."
+              },
+              {
+                "id": 1,
+                "title": "[ Id Hospital ] deterioration of business due to COVID-19",
+                "contents": "Due to COVID-19, entry into Korea was restricted from abroad. Overseas customers accounted for a significant portion of the company's total sales, and due to the deteriorating management, some of the workdays and salaries were cut for all employees. I decided that my own financial position was not stable, so I retired."
+              },
+              {
+                "id": 2,
+                "title": "[ NATE Communications ] voluntary retirement",
+                "contents": "Due to poor management, the reduction of in-house services and the resulting reduction of manpower led to voluntary retirement."
+              }
+            ]
+          }
+        },
+        {
+          "id": 2,
+          "question": "Q. Do you only want to develop front and end?",
+          "answer": {
+            "text": "I'm most familiar with front-end development at the moment, but I think it's a good experience for me if I have the opportunity to utilize a technology stack that can be applied additionally as needed. I aim in a direction in which my company and I can grow together. I don't want to stick to just one technology, and I want to work on service development with an open mind."
+          }
+        }
+      ]
+    }    
   } 
 }
