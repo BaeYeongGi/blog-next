@@ -261,7 +261,11 @@
               },     
               {
                 "id": 4,
-                "contents": "5) Resolve service issues arising from inspection or QA and testing and complete the project."
+                "contents": "5) Share the inspected front-end deliverables to the back-end team. Any subsequent issues will be managed by Jira."
+              },
+              {
+                "id": 5,
+                "contents": "6) Resolve service issues arising from inspection or QA and testing and complete the project."
               }                                      
             ],
             "text": "I've been familiar with this kind of workflow so far, but I'll try to quickly acquire and adapt information about what work tools companies use and how work flows and services operate."
