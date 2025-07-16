@@ -148,87 +148,7 @@
             ]
           }                        
         ]
-      },
-      {
-        "id": 1,
-        "company": "Id Hospital",
-        "summary": "Plastic Surgery and Medical Service Providers",
-        "link": "https://www.idhospital.com",
-        "period": "2019.06. - 2020.04",
-        "skills": [
-          {
-            "id": 0,
-            "skill": "Javascript"
-          },
-          {
-            "id": 1,
-            "skill": "jQuery"
-          },
-          {
-            "id": 2,
-            "skill": "HTML5"
-          },
-          {
-            "id": 3,
-            "skill": "CSS3"
-          }
-        ],
-        "points": [
-          {
-            "title": "ID Hospital web page Maintenance",
-            "list": [
-              {
-                "id": 0,
-                "contents": "Create a new product page"
-              },
-              {
-                "id": 1,
-                "contents": "Response to maintenance and CS issues"
-              }             
-            ]
-          }        
-        ]
-      },
-      {
-        "id": 2,
-        "company": "Gaons",
-        "summary": "Web Agency",
-        "link": "https://gaons.kr/",
-        "period": "2018.04. - 2019.05",
-        "skills": [
-          {
-            "id": 0,
-            "skill": "Javascript"
-          },
-          {
-            "id": 1,
-            "skill": "jQuery"
-          },
-          {
-            "id": 2,
-            "skill": "HTML5"
-          },
-          {
-            "id": 3,
-            "skill": "CSS3"
-          }
-        ],
-        "points": [
-          {
-            "title": "Corporate(Customer) Page Operations Response",
-            "list": [
-              {
-                "id": 0,
-                "contents": "Create a corporate homepage"
-              },
-              {
-                "id": 1,
-                "contents": "Response to maintenance and CS issues"
-              }             
-            ]
-          }        
-        ]
-      }            
+      }          
     ],
     "education": {
       "school": "The Cyber University Of Korea",
@@ -278,16 +198,6 @@
             "list": [
               {
                 "id": 0,
-                "title": "[ Gaons ] Establishing career direction",
-                "contents": "During my tenure for about a year, I became involved in planning work that was not related to the job I wanted. I decided to retire because I aimed to improve my publishing and development capabilities, which I felt was insufficient in the situation."
-              },
-              {
-                "id": 1,
-                "title": "[ Id Hospital ] deterioration of business due to COVID-19",
-                "contents": "Due to COVID-19, entry into Korea was restricted from abroad. Overseas customers accounted for a significant portion of the company's total sales, and due to the deteriorating management, some of the workdays and salaries were cut for all employees. I decided that my own financial position was not stable, so I retired."
-              },
-              {
-                "id": 2,
                 "title": "[ NATE Communications ] voluntary retirement",
                 "contents": "Due to poor management, the reduction of in-house services and the resulting reduction of manpower led to voluntary retirement."
               }
