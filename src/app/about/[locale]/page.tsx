@@ -90,10 +90,10 @@ const Page = ({ params }: PageProps) => {
         <Buttons type="about"/>
       </div>
     </div>
-    <Title classValue={styles.title} value='About TEST COMMIT 1'/>
+    <Title classValue={styles.title} value='About'/>
     <p className={styles.text}>{data.about}</p>
     <Division classValue={styles.division}/>
-    <Title classValue={styles.title} value='Skills TEST COMMIT 1'/>
+    <Title classValue={styles.title} value='Skills'/>
     <ul className={styles.badge_list}>
       {
         skills.map((item) => {
@@ -104,7 +104,7 @@ const Page = ({ params }: PageProps) => {
       }
     </ul>
     <Division classValue={styles.division}/>
-    <Title classValue={styles.title} value='Work Experience TEST COMMIT 1'/>
+    <Title classValue={styles.title} value='Work Experience'/>
     {
       data.workExperience.map((item) => {
         return (
