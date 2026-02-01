@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import Profile from '@/public/images/profile.png';
+import Profile from '@/public/images/profile_icon.png';
 import styles from '@/src/styles/About.module.scss';
 import Buttons from '@/src/components/ui/Buttons';
 import Popup from '@/src/components/ui/Popup';

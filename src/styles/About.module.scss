@@ -30,14 +30,20 @@
   }
 }
 .img_wrap {
+  display:flex;
+  justify-content: center;
+  align-items: center;
   border-radius:1rem;
   overflow:hidden;
   position:relative;
   width:14rem;
   height:16rem;
-  aspect-ratio: 8 / 9;
+  // aspect-ratio: 8 / 9;
+  border:1rem solid #333;
+  background-color:#fff;
   .profile {
     flex:none;
+    object-fit: contain;
   }
 }
 .codebox_container {
