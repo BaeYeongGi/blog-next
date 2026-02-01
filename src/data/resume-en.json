@@ -23,7 +23,7 @@
       }
     ],
     "summary": "Usability-conscious developers",
-    "about": "I am a front-end developer who creates pages that are good for users. I feel very rewarded for delivering good experiences to users. I will complete the screen that focuses on usability with meticulousness and detail.",
+    "about": "I am a publisher & front-end developer who creates pages that are good for users. I feel very rewarded for delivering good experiences to users. I will complete the screen that focuses on usability with meticulousness and detail.",
 
     "workExperience": [
       {
@@ -148,92 +148,70 @@
             ]
           }                        
         ]
-      },
-      {
-        "id": 1,
-        "company": "Id Hospital",
-        "summary": "Plastic Surgery and Medical Service Providers",
-        "link": "https://www.idhospital.com",
-        "period": "2019.06. - 2020.04",
-        "skills": [
-          {
-            "id": 0,
-            "skill": "Javascript"
-          },
-          {
-            "id": 1,
-            "skill": "jQuery"
-          },
-          {
-            "id": 2,
-            "skill": "HTML5"
-          },
-          {
-            "id": 3,
-            "skill": "CSS3"
-          }
-        ],
-        "points": [
-          {
-            "title": "ID Hospital web page Maintenance",
-            "list": [
-              {
-                "id": 0,
-                "contents": "Create a new product page"
-              },
-              {
-                "id": 1,
-                "contents": "Response to maintenance and CS issues"
-              }             
-            ]
-          }        
-        ]
-      },
-      {
-        "id": 2,
-        "company": "Gaons",
-        "summary": "Web Agency",
-        "link": "https://gaons.kr/",
-        "period": "2018.04. - 2019.05",
-        "skills": [
-          {
-            "id": 0,
-            "skill": "Javascript"
-          },
-          {
-            "id": 1,
-            "skill": "jQuery"
-          },
-          {
-            "id": 2,
-            "skill": "HTML5"
-          },
-          {
-            "id": 3,
-            "skill": "CSS3"
-          }
-        ],
-        "points": [
-          {
-            "title": "Corporate(Customer) Page Operations Response",
-            "list": [
-              {
-                "id": 0,
-                "contents": "Create a corporate homepage"
-              },
-              {
-                "id": 1,
-                "contents": "Response to maintenance and CS issues"
-              }             
-            ]
-          }        
-        ]
-      }            
+      }          
     ],
     "education": {
       "school": "The Cyber University Of Korea",
       "department": "Department of Design Engineering",
       "period": "2017.11 - 2022.08"
-    }
+    },
+    "selfInterview": {
+      "summary": "I thought it was an essential question for myself and prepared an answer.",
+      "interview": [
+        {
+          "id": 0,
+          "question": "Q. How did the workflow go in your previous job?",
+          "answer": {
+            "list": [
+              {
+                "id": 0,
+                "contents": "1) Share the plan organized by the service planner to the practitioner."
+              },
+              {
+                "id": 1,
+                "contents": "2) Review whether there are any difficulties or coordination in working on the project and share the work schedule in a meeting or in writing."
+              },
+              {
+                "id": 2,
+                "contents": "3) Projects being carried out will be managed by Jira (ITS) and new requirements or changes will be shared with the practitioner through that Jira."
+              },
+              {
+                "id": 3,
+                "contents": "4) Once the front-end work is completed, an inspection will be conducted to ensure that the work is in line with the proposal and design requirements."
+              },     
+              {
+                "id": 4,
+                "contents": "5) Share the inspected front-end deliverables to the back-end team. Any subsequent issues will be managed by Jira."
+              },
+              {
+                "id": 5,
+                "contents": "6) Resolve service issues arising from inspection or QA and testing and complete the project."
+              }                                      
+            ],
+            "text": "I've been familiar with this kind of workflow so far, but I'll try to quickly acquire and adapt information about what work tools companies use and how work flows and services operate."
+          }
+        },
+        {
+          "id": 1,
+          "question": "Q. I'd like to know about the reasons for my retirement.",
+          "answer": {
+            "list": [
+              {
+                "id": 0,
+                "title": "[ NATE Communications ] voluntary retirement",
+                "contents": "Due to poor management, the reduction of in-house services and the resulting reduction of manpower led to voluntary retirement."
+              }
+            ]
+          }
+        },
+        {
+          "id": 2,
+          "question": "Q. Do you only want to develop front and end?",
+          "answer": {
+            "text": "I'm most familiar with front-end development at the moment, but I think it's a good experience for me if I have the opportunity to utilize a technology stack that can be applied additionally as needed. I aim in a direction in which my company and I can grow together. I don't want to stick to just one technology, and I want to work on service development with an open mind."
+          }
+        }
+      ]
+    }    
   } 
 }
